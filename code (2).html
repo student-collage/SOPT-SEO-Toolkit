@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPT– SEO Toolkit | Best Free SEO Tools for Bloggers</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Optimize your blog posts, generate meta tags, and analyze keywords — all with SOPT's free, AI-powered SEO suite. The best free SEO tools for bloggers and marketers.">
+    <meta name="keywords" content="free SEO tools, meta tag generator, blogging tools, keyword analyzer, content optimization, SOPT, SEO toolkit, robots.txt generator, sitemap generator, title analyzer">
+    <meta name="author" content="SOPT">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* 🎨 THEME SYSTEM & GLOBAL STYLES */
+        :root {
+            --bg-main: #ffffff;
+            --bg-card: #f8f9fa;
+            --header-highlight: #6f42c1;
+            --accent-red: #ff4d4f;
+            --accent-blue: #007bff;
+            --illustration-yellow: #f5b041;
+            --gradient-pink-start: #ff6a6a;
+            --gradient-pink-end: #ffb199;
+            --gradient-blue-start: #3f51b5;
+            --gradient-blue-end: #00c9ff;
+            --text-title: #000000;
+            --text-body: #333333;
+            --text-muted: #555555;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color: rgba(0, 123, 255, 0.3);
+            --button-text-color: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --header-highlight: #7B4FE9;
+            --accent-red: #FF3E57;
+            --accent-blue: #4A90E2;
+            --illustration-yellow: #FFB32D;
+            --text-title: #ffffff;
+            --text-body: #e0e0e0;
+            --text-muted: #aaaaaa;
+            --border-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --glow-color: rgba(74, 144, 226, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-title);
+            font-weight: 700;
+        }
+
+        /* 🧢 HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        [data-theme="dark"] header {
+            background-color: rgba(18, 18, 18, 0.8);
+        }
+
+        .brand-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-title);
+            text-shadow: 0 0 8px var(--header-highlight);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-title);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--header-highlight);
+            box-shadow: 0 0 10px var(--header-highlight);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--header-highlight);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            color: var(--text-title);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-title);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* 🎯 HERO SECTION */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px); /* Adjust for header height */
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg-main);
+        }
+
+        .hero-section::before, .hero-section::after {
+            content: '';
+            position: absolute;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        [data-theme="dark"] .hero-section::before, [data-theme="dark"] .hero-section::after {
+            opacity: 0.25;
+        }
+        
+        .hero-section::before {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: -50px;
+            background: linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end));
+            border-radius: 50%;
+            animation: float-pink 15s infinite ease-in-out alternate;
+        }
+
+        .hero-section::after {
+            width: 400px;
+            height: 400px;
+            bottom: 5%;
+            left: -100px;
+            background: linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end));
+            border-radius: 50%;
+            animation: float-blue 20s infinite ease-in-out alternate-reverse;
+        }
+
+        @keyframes float-pink {
+            from { transform: translateY(0) translateX(0) rotate(0deg); }
+            to { transform: translateY(20px) translateX(-20px) rotate(180deg); }
+        }
+
+        @keyframes float-blue {
+            from { transform: translateY(0) translateX(0) rotate(0deg); }
+            to { transform: translateY(-20px) translateX(20px) rotate(-180deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem auto;
+        }
+        .hero-icon .gear { fill: var(--illustration-yellow); animation: spin 10s linear infinite; transform-origin: center; }
+        .hero-icon .lamp { fill: var(--accent-blue); }
+
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .hero-content .subheading {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-red);
+            color: var(--button-text-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 79, 0.4);
+            animation: cta-glow 2s infinite alternate;
+        }
+
+        @keyframes cta-glow {
+            from { box-shadow: 0 5px 15px rgba(255, 77, 79, 0.4), 0 0 10px var(--accent-red); }
+            to { box-shadow: 0 8px 25px rgba(255, 77, 79, 0.6), 0 0 20px var(--accent-red); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* 🧰 TOOLS SECTION */
+        .tools-section {
+            padding: 4rem 5%;
+            background-color: var(--bg-main);
+        }
+
+        .tools-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-title);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 20px var(--shadow-color), 0 0 20px var(--glow-color);
+        }
+
+        .tool-card h3 {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            text-shadow: 0 0 8px var(--glow-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tool-card .description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .tool-input, .tool-textarea, .tool-select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .tool-input:focus, .tool-textarea:focus, .tool-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px var(--glow-color);
+        }
+        
+        .tool-button, .copy-button {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background-color: var(--accent-blue);
+            color: var(--button-text-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            align-self: flex-start;
+        }
+
+        .tool-button:hover, .copy-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        [data-theme="dark"] .tool-button:hover, [data-theme="dark"] .copy-button:hover {
+            background-color: #6aa9e9;
+        }
+
+        .copy-button {
+            background-color: #28a745;
+        }
+        .copy-button:hover {
+            background-color: #218838;
+        }
+        
+        .tool-output {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 6px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: var(--text-body);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .output-container {
+            position: relative;
+        }
+        
+        .output-container .copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .output-container:hover .copy-button {
+            opacity: 1;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--bg-card);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a { font-size: 1.5rem; }
+            .hamburger { display: flex; z-index: 1001; }
+            .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content .subheading { font-size: 1rem; }
+            .hero-section::before { width: 200px; height: 200px; }
+            .hero-section::after { width: 300px; height: 300px; }
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+        
+        footer p {
+            color: var(--text-muted);
+        }
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🧢 HEADER -->
+    <header>
+        <div class="brand-title">SOPT– SEO Toolkit</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" id="theme-toggle" title="Toggle Theme">🌙</button></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- 🎯 HERO SECTION -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <svg class="hero-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path class="gear" d="M82.2,62.1l-4.7-2.2c-1.3-3.8-3.1-7.3-5.5-10.5l1.9-4.8c0.6-1.6-0.1-3.3-1.6-4.2l-8.4-5.1c-1.5-0.9-3.4-0.5-4.5,0.9l-3.2,4.1c-3.1-1.1-6.3-1.8-9.7-1.8s-6.6,0.7-9.7,1.8l-3.2-4.1c-1.1-1.4-3-1.8-4.5-0.9L24,39.3c-1.5,0.9-2.2,2.6-1.6,4.2l1.9,4.8c-2.4,3.1-4.2,6.7-5.5,10.5l-4.7,2.2c-1.6,0.7-2.4,2.5-1.9,4.2l2.9,9.3c0.5,1.7,2.2,2.8,4,2.5l5.1-1.5c2.3,3.4,5.2,6.4,8.6,8.6l-1.5,5.1c-0.4,1.8,0.8,3.5,2.5,4l9.3,2.9c1.7,0.5,3.5-0.3,4.2-1.9l2.2-4.7c3.8,1.3,7.3,2,10.5,2.2V100h10V88.8c3.2-0.2,6.7-0.9,10.5-2.2l2.2,4.7c0.7,1.6,2.5,2.4,4.2,1.9l9.3-2.9c1.8-0.5,3-2.2,2.5-4l-1.5-5.1c3.4-2.3,6.4-5.2,8.6-8.6l5.1,1.5c1.8,0.4,3.5-0.8,4-2.5l2.9-9.3C84.6,64.6,83.8,62.8,82.2,62.1z M50,67.5c-9.7,0-17.5-7.8-17.5-17.5S40.3,32.5,50,32.5S67.5,40.3,67.5,50S59.7,67.5,50,67.5z"/>
+                    <path class="lamp" d="M50,0C30.7,0,15,15.7,15,35c0,12.4,6.4,23.3,16.1,29.3c-1.2,2.9-1.9,6-2.1,9.2H25c-2.8,0-5,2.2-5,5s2.2,5,5,5h10.3c0.4,4.9,2.4,9.5,5.7,13.2c1.2,1.3,3.1,1.5,4.5,0.4l0.1-0.1c1.3-1.2,1.5-3.1,0.4-4.5C42.8,85,41.2,80.7,40.6,74h18.8c-0.6,6.7-2.2,11-4.4,14.2c-1.1,1.4-0.9,3.4,0.4,4.5l0.1,0.1c1.4,1.1,3.4,0.9,4.5-0.4c3.3-3.7,5.3-8.3,5.7-13.2H75c2.8,0,5-2.2,5-5s-2.2-5-5-5h-4c-0.2-3.2-0.9-6.3-2.1-9.2C78.6,58.3,85,47.4,85,35C85,15.7,69.3,0,50,0z M50,60c-13.8,0-25-11.2-25-25S36.2,10,50,10s25,11.2,25,25S63.8,60,50,60z"/>
+                </svg>
+                <h1>Best Free SEO Tools for Bloggers & Marketers</h1>
+                <p class="subheading">Optimize your blog posts, generate meta tags, and analyze keywords — all with SOPT’s powerful and free SEO tools suite. Perfect for content optimization and boosting your site's visibility.</p>
+                <a href="#tools" class="cta-button">Start Exploring &rarr;</a>
+            </div>
+        </section>
+
+        <!-- 🧰 TOOLS SECTION -->
+        <section id="tools" class="tools-section">
+            <h2>Our SEO & Blogging Toolkit</h2>
+            <div class="tools-grid">
+
+                <!-- TOOL 1: Meta Tag Generator -->
+                <div class="tool-card">
+                    <h3>🔍 Meta Tag Generator</h3>
+                    <div class="description">Create SEO-friendly meta title and description tags for your web pages. Well-crafted meta tags can improve click-through rates from search engine results pages (SERPs). This tool helps you quickly generate the necessary HTML code.</div>
+                    <input type="text" id="metaTitle" class="tool-input" placeholder="Enter Page Title">
+                    <textarea id="metaDesc" class="tool-textarea" placeholder="Enter Page Description"></textarea>
+                    <input type="text" id="metaKeywords" class="tool-input" placeholder="Enter Keywords (comma-separated)">
+                    <button id="generateMeta" class="tool-button">Generate Meta Tags</button>
+                    <div class="output-container">
+                        <pre id="metaOutput" class="tool-output"></pre>
+                        <button class="copy-button" data-target="metaOutput">Copy</button>
+                    </div>
+                </div>
+
+                <!-- TOOL 2: Keyword Density Checker -->
+                <div class="tool-card">
+                    <h3>🔍 Keyword Density Checker</h3>
+                    <div class="description">Analyze the density of keywords in your text to avoid keyword stuffing and ensure a natural distribution. This helps in optimizing content for search engines without triggering spam filters. A density of 1-2% is often recommended.</div>
+                    <input type="text" id="densityKeyword" class="tool-input" placeholder="Enter main keyword">
+                    <textarea id="densityText" class="tool-textarea" placeholder="Paste your text here..."></textarea>
+                    <pre id="densityOutput" class="tool-output">Results will appear here...</pre>
+                </div>
+                
+                <!-- TOOL 3: Robots.txt Generator -->
+                <div class="tool-card">
+                    <h3>🔍 Robots.txt Generator</h3>
+                    <div class="description">Generate a `robots.txt` file to guide search engine crawlers on which parts of your site to access or ignore. Control access for major bots like Googlebot and Bingbot and specify your sitemap location for better indexing.</div>
+                    <label>Default for all bots:</label>
+                    <select id="robotsAll" class="tool-select">
+                        <option value="Allow">Allow all</option>
+                        <option value="Disallow">Disallow all</option>
+                    </select>
+                    <input type="text" id="robotsSitemap" class="tool-input" placeholder="Sitemap URL (e.g., https://yoursite.com/sitemap.xml)">
+                    <button id="generateRobots" class="tool-button">Generate Robots.txt</button>
+                     <div class="output-container">
+                        <pre id="robotsOutput" class="tool-output"></pre>
+                        <button class="copy-button" data-target="robotsOutput">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- TOOL 4: Sitemap Generator (Basic) -->
+                <div class="tool-card">
+                    <h3>🔍 Sitemap Generator</h3>
+                    <div class="description">Create a basic XML sitemap by listing your site's URLs. Sitemaps help search engines find and index all the important pages on your website more efficiently. Paste one URL per line to generate the sitemap code.</div>
+                    <textarea id="sitemapUrls" class="tool-textarea" placeholder="Paste URLs, one per line..."></textarea>
+                    <button id="generateSitemap" class="tool-button">Generate Sitemap</button>
+                     <div class="output-container">
+                        <pre id="sitemapOutput" class="tool-output"></pre>
+                        <button class="copy-button" data-target="sitemapOutput">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- TOOL 5: Title & Description Analyzer -->
+                <div class="tool-card">
+                    <h3>🔍 Title & Description Analyzer</h3>
+                    <div class="description">Check the length of your page titles and meta descriptions. Optimal lengths are crucial for full visibility in search results. Titles should ideally be under 60 characters, and descriptions under 160 characters.</div>
+                    <input type="text" id="titleAnalyzerInput" class="tool-input" placeholder="Enter Page Title">
+                    <textarea id="descAnalyzerInput" class="tool-textarea" placeholder="Enter Meta Description"></textarea>
+                    <pre id="analyzerOutput" class="tool-output">Length analysis will appear here...</pre>
+                </div>
+
+                <!-- TOOL 6: URL Encoder/Decoder -->
+                <div class="tool-card">
+                    <h3>🔍 URL Encoder/Decoder</h3>
+                    <div class="description">Encode strings into a URL-safe format or decode them back to their original state. This is useful for handling special characters in URLs, ensuring they are correctly interpreted by web servers and browsers.</div>
+                    <textarea id="urlCoderInput" class="tool-textarea" placeholder="Enter text or URL component"></textarea>
+                    <div class="button-group">
+                        <button id="urlEncodeBtn" class="tool-button">Encode</button>
+                        <button id="urlDecodeBtn" class="tool-button">Decode</button>
+                    </div>
+                    <pre id="urlCoderOutput" class="tool-output"></pre>
+                </div>
+
+                <!-- TOOL 7: Canonical Tag Generator -->
+                <div class="tool-card">
+                    <h3>🔍 Canonical Tag Generator</h3>
+                    <div class="description">Generate a `rel="canonical"` link tag to prevent duplicate content issues. This tag tells search engines which version of a URL is the master copy, consolidating link equity and improving indexing accuracy.</div>
+                    <input type="text" id="canonicalUrl" class="tool-input" placeholder="Enter the preferred URL">
+                    <button id="generateCanonical" class="tool-button">Generate Tag</button>
+                    <div class="output-container">
+                        <pre id="canonicalOutput" class="tool-output"></pre>
+                        <button class="copy-button" data-target="canonicalOutput">Copy</button>
+                    </div>
+                </div>
+
+                <!-- TOOL 8: Slug Generator -->
+                <div class="tool-card">
+                    <h3>🔍 Slug Generator</h3>
+                    <div class="description">Create clean, SEO-friendly URL slugs from your page or post titles. Slugs are the part of a URL that identifies a specific page. This tool converts titles into lowercase, hyphenated strings for optimal readability and SEO.</div>
+                    <input type="text" id="slugInput" class="tool-input" placeholder="Enter post or page title">
+                    <pre id="slugOutput" class="tool-output">your-clean-slug-appears-here</pre>
+                </div>
+
+                <!-- TOOL 9: Redirect URL Generator (.htaccess) -->
+                <div class="tool-card">
+                    <h3>🔍 Redirect URL Generator</h3>
+                    <div class="description">Generate `.htaccess` code for common redirects, such as 301 (permanent) or 302 (temporary). Properly redirecting old URLs to new ones is essential for preserving SEO value and providing a good user experience.</div>
+                    <input type="text" id="oldUrl" class="tool-input" placeholder="Old URL (e.g., /old-page.html)">
+                    <input type="text" id="newUrl" class="tool-input" placeholder="New URL (e.g., /new-page.html)">
+                    <select id="redirectType" class="tool-select">
+                        <option value="301">301 Permanent</option>
+                        <option value="302">302 Temporary</option>
+                    </select>
+                    <button id="generateRedirect" class="tool-button">Generate Code</button>
+                     <div class="output-container">
+                        <pre id="redirectOutput" class="tool-output"></pre>
+                        <button class="copy-button" data-target="redirectOutput">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- TOOL 10: Alt Text Generator -->
+                <div class="tool-card">
+                    <h3>🔍 Alt Text Generator</h3>
+                    <div class="description">Quickly generate descriptive alt text for your images. Alt text is crucial for accessibility (screen readers) and SEO, as it helps search engines understand the content of an image. Describe the image clearly and concisely.</div>
+                    <input type="text" id="altImageDesc" class="tool-input" placeholder="Describe the image content">
+                    <button id="generateAlt" class="tool-button">Generate Alt Text</button>
+                    <div class="output-container">
+                        <pre id="altOutput" class="tool-output"></pre>
+                        <button class="copy-button" data-target="altOutput">Copy</button>
+                    </div>
+                </div>
+
+                <!-- TOOL 11: Blog Title Generator -->
+                <div class="tool-card">
+                    <h3>✍️ Blog Title Generator</h3>
+                    <div class="description">Get catchy and effective blog title ideas. Enter a keyword, and this tool will generate a list of potential titles using proven formulas like "How-To," "Listicles," and "Question-Based" headlines to attract more readers.</div>
+                    <input type="text" id="titleIdeaKeyword" class="tool-input" placeholder="Enter your main keyword">
+                    <button id="generateTitleIdeas" class="tool-button">Generate Titles</button>
+                    <pre id="titleIdeasOutput" class="tool-output">Title ideas will appear here...</pre>
+                </div>
+
+                <!-- TOOL 12: Blog Topic Idea Generator -->
+                <div class="tool-card">
+                    <h3>✍️ Blog Topic Idea Generator</h3>
+                    <div class="description">Struggling with writer's block? Enter a broad topic to get a list of specific blog post ideas. This tool helps you brainstorm new content angles, ensuring you always have fresh topics to write about for your audience.</div>
+                    <input type="text" id="topicIdeaKeyword" class="tool-input" placeholder="Enter a broad topic">
+                    <button id="generateTopicIdeas" class="tool-button">Generate Ideas</button>
+                    <pre id="topicIdeasOutput" class="tool-output">Topic ideas will appear here...</pre>
+                </div>
+                
+                <!-- TOOL 13: Read Time Estimator -->
+                <div class="tool-card">
+                    <h3>✍️ Read Time Estimator</h3>
+                    <div class="description">Calculate the estimated reading time for your articles. Displaying a read time can increase user engagement, as readers know the time commitment upfront. The average reading speed is around 200-230 words per minute.</div>
+                    <textarea id="readTimeText" class="tool-textarea" placeholder="Paste your article text here..."></textarea>
+                    <pre id="readTimeOutput" class="tool-output">Estimated read time will be shown here.</pre>
+                </div>
+
+                <!-- TOOL 14: Word & Character Counter -->
+                <div class="tool-card">
+                    <h3>✍️ Word & Character Counter</h3>
+                    <div class="description">Instantly count the number of words and characters in a piece of text. This is essential for meeting content length requirements for social media, meta descriptions, or article guidelines. It also helps in assessing content depth.</div>
+                    <textarea id="counterText" class="tool-textarea" placeholder="Paste your text here for counting..."></textarea>
+                    <pre id="counterOutput" class="tool-output">Words: 0 | Characters: 0</pre>
+                </div>
+
+                <!-- TOOL 15: HTML Tag Cleaner -->
+                <div class="tool-card">
+                    <h3>✍️ HTML Tag Cleaner</h3>
+                    <div class="description">Remove all HTML tags from a block of text, leaving only the plain text content. This is useful when you need to repurpose content from a web page or clean up text copied from a rich text editor for other uses.</div>
+                    <textarea id="htmlCleanerInput" class="tool-textarea" placeholder="Paste HTML content here..."></textarea>
+                    <button id="cleanHtmlBtn" class="tool-button">Clean HTML</button>
+                    <pre id="htmlCleanerOutput" class="tool-output"></pre>
+                </div>
+                
+                <!-- TOOL 16: Markdown to HTML Viewer -->
+                <div class="tool-card">
+                    <h3>✍️ Markdown to HTML Viewer</h3>
+                    <div class="description">Convert Markdown syntax into HTML and see a live preview. A great tool for bloggers and developers who write in Markdown and need to quickly see the final HTML output for their website or documentation.</div>
+                    <textarea id="markdownInput" class="tool-textarea" placeholder="Type Markdown here... (e.g., # Hello)"></textarea>
+                    <pre id="markdownOutput" class="tool-output">HTML output will appear here.</pre>
+                </div>
+
+                <!-- TOOL 17: Case Converter -->
+                <div class="tool-card">
+                    <h3>✍️ Text Formatter (Case Converter)</h3>
+                    <div class="description">Easily convert text between different cases: UPPERCASE, lowercase, Title Case, and Sentence case. A handy utility for formatting headlines, titles, and other text elements consistently without manual retyping.</div>
+                    <textarea id="caseConverterInput" class="tool-textarea" placeholder="Enter text to format..."></textarea>
+                    <div class="button-group">
+                        <button class="tool-button" data-case="upper">UPPERCASE</button>
+                        <button class="tool-button" data-case="lower">lowercase</button>
+                        <button class="tool-button" data-case="title">Title Case</button>
+                        <button class="tool-button" data-case="sentence">Sentence case</button>
+                    </div>
+                    <pre id="caseConverterOutput" class="tool-output"></pre>
+                </div>
+
+                <!-- TOOL 18: Lorem Ipsum Generator -->
+                <div class="tool-card">
+                    <h3>✍️ Lorem Ipsum Generator</h3>
+                    <div class="description">Generate placeholder "Lorem Ipsum" text for your design mockups and layouts. Specify the number of paragraphs you need, and the tool will create dummy text to help you visualize your content areas before the final copy is ready.</div>
+                    <input type="number" id="loremParagraphs" class="tool-input" value="3" min="1" max="20">
+                    <button id="generateLorem" class="tool-button">Generate Text</button>
+                     <div class="output-container">
+                        <pre id="loremOutput" class="tool-output"></pre>
+                        <button class="copy-button" data-target="loremOutput">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- TOOL 19: Text to Speech (TTS) -->
+                <div class="tool-card">
+                    <h3>⚙️ Text to Speech</h3>
+                    <div class="description">Convert written text into spoken words. This accessibility tool can help users listen to your content. It's also great for proofreading, as hearing your text read aloud can help you catch errors and awkward phrasing.</div>
+                    <textarea id="ttsInput" class="tool-textarea" placeholder="Enter text to be spoken..."></textarea>
+                    <div class="button-group">
+                        <button id="speakBtn" class="tool-button">Speak</button>
+                        <button id="stopBtn" class="tool-button">Stop</button>
+                    </div>
+                    <pre id="ttsOutput" class="tool-output">Status: Ready</pre>
+                </div>
+
+                <!-- TOOL 20: Line Break Remover -->
+                <div class="tool-card">
+                    <h3>⚙️ Line Break Remover</h3>
+                    <div class="description">Remove unwanted line breaks from your text. This tool can clean up text copied from PDFs, emails, or other sources where formatting creates extra line breaks, consolidating it into a single paragraph or removing empty lines.</div>
+                    <textarea id="lineBreakInput" class="tool-textarea" placeholder="Paste text with line breaks..."></textarea>
+                    <div class="button-group">
+                        <button id="removeBreaksBtn" class="tool-button">Remove & Join</button>
+                        <button id="removeEmptyLinesBtn" class="tool-button">Remove Empty Lines</button>
+                    </div>
+                    <pre id="lineBreakOutput" class="tool-output"></pre>
+                </div>
+                
+                <!-- TOOL 21: Text Repeater -->
+                 <div class="tool-card">
+                    <h3>⚙️ Text Repeater</h3>
+                    <div class="description">Repeat a piece of text a specified number of times. Useful for testing character limits, creating sample data, or just for fun. You can choose to separate the repeated text with a space, new line, or no separator at all.</div>
+                    <input type="text" id="textRepeatInput" class="tool-input" placeholder="Text to repeat">
+                    <input type="number" id="textRepeatCount" class="tool-input" value="5" min="1" max="1000">
+                    <select id="textRepeatSeparator" class="tool-select">
+                        <option value=" ">Space</option>
+                        <option value="\n">New Line</option>
+                        <option value="">None</option>
+                    </select>
+                    <button id="repeatTextBtn" class="tool-button">Repeat</button>
+                    <pre id="textRepeatOutput" class="tool-output"></pre>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="tools-section" style="min-height: 40vh;">
+            <h2>About SOPT</h2>
+            <p style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8; color: var(--text-muted);">
+                SOPT (SEO & Optimization Prompt Toolkit) is a project designed to provide bloggers, marketers, and web developers with a suite of essential, fast, and free tools. Our mission is to make content optimization and technical SEO accessible to everyone, without the need for expensive subscriptions or complex software. All tools run directly in your browser, ensuring your data remains private and your workflow is uninterrupted. This toolkit was created with Vanilla JavaScript to demonstrate the power of modern web technologies.
+            </p>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2024 SOPT– SEO Toolkit. Created for demonstration purposes.</p>
+        <p>A project by <a href="https://github.com/your-github-link" target="_blank" rel="noopener noreferrer">Your Name/Brand</a>, inspired by the need for simple, effective tools.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 🎨 THEME SYSTEM
+    const themeToggle = document.getElementById('theme-toggle');
+    const docElement = document.documentElement;
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    docElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+    themeToggle.addEventListener('click', () => {
+        const newTheme = docElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        docElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // 🧢 RESPONSIVE NAVIGATION
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+
+    // 📋 GENERIC COPY BUTTON HANDLER
+    document.querySelectorAll('.copy-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.dataset.target;
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                navigator.clipboard.writeText(targetElement.innerText).then(() => {
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            }
+        });
+    });
+
+    // --- 🔧 TOOL FUNCTIONALITY ---
+
+    // TOOL 1: Meta Tag Generator
+    const generateMetaBtn = document.getElementById('generateMeta');
+    generateMetaBtn.addEventListener('click', () => {
+        const title = document.getElementById('metaTitle').value;
+        const desc = document.getElementById('metaDesc').value;
+        const keywords = document.getElementById('metaKeywords').value;
+        const output = document.getElementById('metaOutput');
+        
+        let metaTags = '';
+        if (title) metaTags += `<title>${title}</title>\n`;
+        if (desc) metaTags += `<meta name="description" content="${desc}">\n`;
+        if (keywords) metaTags += `<meta name="keywords" content="${keywords}">`;
+        
+        output.textContent = metaTags.trim() || 'Please fill in at least one field.';
+    });
+
+    // TOOL 2: Keyword Density Checker
+    const densityKeywordInput = document.getElementById('densityKeyword');
+    const densityTextInput = document.getElementById('densityText');
+    const densityOutput = document.getElementById('densityOutput');
+    const calculateDensity = () => {
+        const keyword = densityKeywordInput.value.trim().toLowerCase();
+        const text = densityTextInput.value.trim().toLowerCase();
+        
+        if (!keyword || !text) {
+            densityOutput.textContent = 'Results will appear here...';
+            return;
+        }
+
+        const words = text.split(/\s+/).filter(word => word.length > 0);
+        const totalWords = words.length;
+        const keywordCount = words.filter(word => word.includes(keyword)).length;
+        const density = totalWords > 0 ? ((keywordCount / totalWords) * 100).toFixed(2) : 0;
+
+        densityOutput.textContent = `Total Words: ${totalWords}\nKeyword Count: ${keywordCount}\nDensity: ${density}%`;
+    };
+    densityKeywordInput.addEventListener('input', calculateDensity);
+    densityTextInput.addEventListener('input', calculateDensity);
+
+    // TOOL 3: Robots.txt Generator
+    document.getElementById('generateRobots').addEventListener('click', () => {
+        const rule = document.getElementById('robotsAll').value;
+        const sitemap = document.getElementById('robotsSitemap').value;
+        const output = document.getElementById('robotsOutput');
+
+        let content = "User-agent: *\n";
+        content += `${rule}: /\n\n`;
+        if (sitemap) {
+            content += `Sitemap: ${sitemap}`;
+        }
+        output.textContent = content.trim();
+    });
+
+    // TOOL 4: Sitemap Generator
+    document.getElementById('generateSitemap').addEventListener('click', () => {
+        const urls = document.getElementById('sitemapUrls').value.split('\n').filter(url => url.trim() !== '');
+        const output = document.getElementById('sitemapOutput');
+
+        if (urls.length === 0) {
+            output.textContent = 'Please enter at least one URL.';
+            return;
+        }
+        
+        let sitemapContent = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+        urls.forEach(url => {
+            sitemapContent += `  <url>\n    <loc>${url.trim()}</loc>\n  </url>\n`;
+        });
+        sitemapContent += '</urlset>';
+        output.textContent = sitemapContent;
+    });
+
+    // TOOL 5: Title & Description Analyzer
+    const titleAnalyzerInput = document.getElementById('titleAnalyzerInput');
+    const descAnalyzerInput = document.getElementById('descAnalyzerInput');
+    const analyzerOutput = document.getElementById('analyzerOutput');
+    const analyzeLengths = () => {
+        const title = titleAnalyzerInput.value;
+        const desc = descAnalyzerInput.value;
+        const titleLength = title.length;
+        const descLength = desc.length;
+
+        analyzerOutput.textContent = `Title Length: ${titleLength} (Recommended: < 60)\nDescription Length: ${descLength} (Recommended: < 160)`;
+    };
+    titleAnalyzerInput.addEventListener('input', analyzeLengths);
+    descAnalyzerInput.addEventListener('input', analyzeLengths);
+
+    // TOOL 6: URL Encoder/Decoder
+    const urlCoderInput = document.getElementById('urlCoderInput');
+    const urlCoderOutput = document.getElementById('urlCoderOutput');
+    document.getElementById('urlEncodeBtn').addEventListener('click', () => {
+        urlCoderOutput.textContent = encodeURIComponent(urlCoderInput.value);
+    });
+    document.getElementById('urlDecodeBtn').addEventListener('click', () => {
+        try {
+            urlCoderOutput.textContent = decodeURIComponent(urlCoderInput.value);
+        } catch (e) {
+            urlCoderOutput.textContent = 'Error: Invalid encoded string.';
+        }
+    });
+    
+    // TOOL 7: Canonical Tag Generator
+    document.getElementById('generateCanonical').addEventListener('click', () => {
+        const url = document.getElementById('canonicalUrl').value.trim();
+        const output = document.getElementById('canonicalOutput');
+        if (url) {
+            output.textContent = `<link rel="canonical" href="${url}" />`;
+        } else {
+            output.textContent = 'Please enter a URL.';
+        }
+    });
+
+    // TOOL 8: Slug Generator
+    document.getElementById('slugInput').addEventListener('input', (e) => {
+        const title = e.target.value;
+        const slug = title
+            .toLowerCase()
+            .trim()
+            .replace(/[^\w\s-]/g, '') // Remove non-word chars
+            .replace(/[\s_-]+/g, '-') // Replace spaces with -
+            .replace(/^-+|-+$/g, ''); // Remove leading/trailing dashes
+        document.getElementById('slugOutput').textContent = slug || 'your-clean-slug-appears-here';
+    });
+
+    // TOOL 9: Redirect URL Generator
+    document.getElementById('generateRedirect').addEventListener('click', () => {
+        const oldUrl = document.getElementById('oldUrl').value.trim();
+        const newUrl = document.getElementById('newUrl').value.trim();
+        const type = document.getElementById('redirectType').value;
+        const output = document.getElementById('redirectOutput');
+        if (oldUrl && newUrl) {
+            output.textContent = `Redirect ${type} ${oldUrl} ${newUrl}`;
+        } else {
+            output.textContent = 'Please enter both Old and New URLs.';
+        }
+    });
+
+    // TOOL 10: Alt Text Generator
+    document.getElementById('generateAlt').addEventListener('click', () => {
+        const desc = document.getElementById('altImageDesc').value.trim();
+        const output = document.getElementById('altOutput');
+        if (desc) {
+            output.textContent = `alt="${desc}"`;
+        } else {
+            output.textContent = 'Please describe the image.';
+        }
+    });
+    
+    // TOOL 11: Blog Title Generator
+    document.getElementById('generateTitleIdeas').addEventListener('click', () => {
+        const keyword = document.getElementById('titleIdeaKeyword').value.trim();
+        const output = document.getElementById('titleIdeasOutput');
+        if (!keyword) {
+            output.textContent = 'Please enter a keyword.';
+            return;
+        }
+        const templates = [
+            `The Ultimate Guide to ${keyword}`,
+            `10 Common Mistakes to Avoid When Dealing with ${keyword}`,
+            `How to Master ${keyword} in 7 Days`,
+            `Why ${keyword} is More Important Than You Think`,
+            `${keyword}: A Beginner's Guide`,
+            `The Top 5 Tools for ${keyword}`,
+            `Everything You Need to Know About ${keyword}`
+        ];
+        output.textContent = templates.join('\n');
+    });
+
+    // TOOL 12: Blog Topic Idea Generator
+    document.getElementById('generateTopicIdeas').addEventListener('click', () => {
+        const topic = document.getElementById('topicIdeaKeyword').value.trim();
+        const output = document.getElementById('topicIdeasOutput');
+         if (!topic) {
+            output.textContent = 'Please enter a topic.';
+            return;
+        }
+        const ideas = [
+            `The future of ${topic}`,
+            `Interviewing an expert on ${topic}`,
+            `A case study about successful ${topic}`,
+            `Comparing ${topic} platforms/tools`,
+            `How ${topic} has changed in the last 5 years`,
+            `Common myths about ${topic} debunked`
+        ];
+        output.textContent = ideas.join('\n');
+    });
+
+    // TOOL 13: Read Time Estimator
+    document.getElementById('readTimeText').addEventListener('input', (e) => {
+        const text = e.target.value.trim();
+        const words = text === '' ? 0 : text.split(/\s+/).length;
+        const wpm = 225;
+        const minutes = Math.ceil(words / wpm);
+        document.getElementById('readTimeOutput').textContent = `${minutes} min read (${words} words)`;
+    });
+    
+    // TOOL 14: Word & Character Counter
+    document.getElementById('counterText').addEventListener('input', (e) => {
+        const text = e.target.value;
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+        const chars = text.length;
+        document.getElementById('counterOutput').textContent = `Words: ${words} | Characters: ${chars}`;
+    });
+
+    // TOOL 15: HTML Tag Cleaner
+    document.getElementById('cleanHtmlBtn').addEventListener('click', () => {
+        const html = document.getElementById('htmlCleanerInput').value;
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        document.getElementById('htmlCleanerOutput').textContent = div.textContent || div.innerText || '';
+    });
+
+    // TOOL 16: Markdown to HTML Viewer
+    document.getElementById('markdownInput').addEventListener('input', (e) => {
+        let text = e.target.value;
+        // Basic Markdown to HTML conversion
+        text = text
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+            .replace(/\*(.*)\*/gim, '<i>$1</i>')
+            .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>')
+            .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+            .replace(/\n/g, '<br>');
+        document.getElementById('markdownOutput').textContent = text;
+    });
+
+    // TOOL 17: Case Converter
+    const caseConverterInput = document.getElementById('caseConverterInput');
+    const caseConverterOutput = document.getElementById('caseConverterOutput');
+    document.querySelectorAll('.tool-button[data-case]').forEach(button => {
+        button.addEventListener('click', () => {
+            const text = caseConverterInput.value;
+            const caseType = button.dataset.case;
+            switch(caseType) {
+                case 'upper':
+                    caseConverterOutput.textContent = text.toUpperCase();
+                    break;
+                case 'lower':
+                    caseConverterOutput.textContent = text.toLowerCase();
+                    break;
+                case 'title':
+                    caseConverterOutput.textContent = text.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                    break;
+                case 'sentence':
+                    caseConverterOutput.textContent = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+                    break;
+            }
+        });
+    });
+
+    // TOOL 18: Lorem Ipsum Generator
+    document.getElementById('generateLorem').addEventListener('click', () => {
+        const numParagraphs = parseInt(document.getElementById('loremParagraphs').value, 10);
+        const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        let result = '';
+        for (let i = 0; i < numParagraphs; i++) {
+            result += lorem + '\n\n';
+        }
+        document.getElementById('loremOutput').textContent = result.trim();
+    });
+    
+    // TOOL 19: Text to Speech
+    const ttsInput = document.getElementById('ttsInput');
+    const ttsOutput = document.getElementById('ttsOutput');
+    const synth = window.speechSynthesis;
+    document.getElementById('speakBtn').addEventListener('click', () => {
+        if (synth.speaking) {
+            ttsOutput.textContent = "Status: Already speaking.";
+            return;
+        }
+        if (ttsInput.value !== '') {
+            const utterThis = new SpeechSynthesisUtterance(ttsInput.value);
+            utterThis.onend = () => { ttsOutput.textContent = "Status: Finished speaking."; };
+            utterThis.onerror = () => { ttsOutput.textContent = "Status: Error occurred."; };
+            synth.speak(utterThis);
+            ttsOutput.textContent = "Status: Speaking...";
+        }
+    });
+    document.getElementById('stopBtn').addEventListener('click', () => {
+        synth.cancel();
+        ttsOutput.textContent = "Status: Ready";
+    });
+
+    // TOOL 20: Line Break Remover
+    const lineBreakInput = document.getElementById('lineBreakInput');
+    const lineBreakOutput = document.getElementById('lineBreakOutput');
+    document.getElementById('removeBreaksBtn').addEventListener('click', () => {
+        lineBreakOutput.textContent = lineBreakInput.value.replace(/(\r\n|\n|\r)/gm, " ").replace(/\s+/g, ' ');
+    });
+    document.getElementById('removeEmptyLinesBtn').addEventListener('click', () => {
+        lineBreakOutput.textContent = lineBreakInput.value.replace(/^\s*[\r\n]/gm, "");
+    });
+
+    // TOOL 21: Text Repeater
+    document.getElementById('repeatTextBtn').addEventListener('click', () => {
+        const text = document.getElementById('textRepeatInput').value;
+        const count = parseInt(document.getElementById('textRepeatCount').value, 10);
+        const separator = document.getElementById('textRepeatSeparator').value;
+        const output = document.getElementById('textRepeatOutput');
+        if (text && count > 0) {
+            output.textContent = new Array(count).fill(text).join(separator);
+        } else {
+            output.textContent = 'Please provide text and a valid count.';
+        }
+    });
+
+});
+</script>
+</body>
+</html>
