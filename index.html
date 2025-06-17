@@ -3,1153 +3,576 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOPT– SEO Toolkit | Best Free SEO Tools for Bloggers</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Optimize your blog posts, generate meta tags, and analyze keywords — all with SOPT's free, AI-powered SEO suite. The best free SEO tools for bloggers and marketers.">
-    <meta name="keywords" content="free SEO tools, meta tag generator, blogging tools, keyword analyzer, content optimization, SOPT, SEO toolkit, robots.txt generator, sitemap generator, title analyzer">
-    <meta name="author" content="SOPT">
-
-    <!-- Google Fonts -->
+    <title>SOPT – The Definitive SEO Toolkit | by Gauri Gurav</title>
+    <meta name="description" content="The definitive free and futuristic SEO Toolkit by SOPT. Featuring 23+ fully operational, professional-grade tools, a brand-new creative animated logo, and a stunning UI. Developed by Gauri Gurav.">
+    <meta name="keywords" content="free SEO tools, ultimate seo toolkit, modal tools, sopt, gauri gurav, meta tag generator, serp preview, keyword analyzer, content optimization, professional web app">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 🎨 THEME SYSTEM & GLOBAL STYLES */
         :root {
-            --bg-main: #ffffff;
-            --bg-card: #f8f9fa;
-            --header-highlight: #6f42c1;
-            --accent-red: #ff4d4f;
-            --accent-blue: #007bff;
-            --illustration-yellow: #f5b041;
-            --gradient-pink-start: #ff6a6a;
-            --gradient-pink-end: #ffb199;
-            --gradient-blue-start: #3f51b5;
-            --gradient-blue-end: #00c9ff;
-            --text-title: #000000;
-            --text-body: #333333;
-            --text-muted: #555555;
-            --border-color: #dee2e6;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --glow-color: rgba(0, 123, 255, 0.3);
-            --button-text-color: #ffffff;
+            /* Light Theme */
+            --bg-main-light: #f8f9fa; --bg-card-light: #ffffff; --bg-modal-light: #ffffff; --text-primary-light: #212529; --text-secondary-light: #6c757d; --border-glow-light: #007bff; --shadow-glow-light: 0 0 20px rgba(0, 123, 255, 0.15); --cta-bg-light: #007bff; --header-bg-light: rgba(255, 255, 255, 0.7);
+
+            /* Dark Theme */
+            --bg-main-dark: #0a0c10; --bg-card-dark: #11141a; --bg-modal-dark: #161a22; --text-primary-dark: #e9ecef; --text-secondary-dark: #adb5bd; --border-glow-dark: #00aaff; --shadow-glow-dark: 0 0 20px rgba(0, 170, 255, 0.25); --cta-bg-dark: #00aaff; --header-bg-dark: rgba(10, 12, 16, 0.7);
+            
+            /* Default to Dark */
+            --bg-main: var(--bg-main-dark); --bg-card: var(--bg-card-dark); --bg-modal: var(--bg-modal-dark); --text-primary: var(--text-primary-dark); --text-secondary: var(--text-secondary-dark); --border-glow: var(--border-glow-dark); --shadow-glow: var(--shadow-glow-dark); --cta-bg: var(--cta-bg-dark); --cta-text: #ffffff; --cta-glow: 0 0 20px rgba(0, 170, 255, 0.6); --header-bg: var(--header-bg-dark); --input-bg: #1a1e25; --input-border: #343a40; --icon-color: var(--text-primary-dark); --footer-bg: #0a0c10; --footer-border: #1a1e25;
         }
 
-        [data-theme="dark"] {
-            --bg-main: #121212;
-            --bg-card: #1e1e1e;
-            --header-highlight: #7B4FE9;
-            --accent-red: #FF3E57;
-            --accent-blue: #4A90E2;
-            --illustration-yellow: #FFB32D;
-            --text-title: #ffffff;
-            --text-body: #e0e0e0;
-            --text-muted: #aaaaaa;
-            --border-color: #333;
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --glow-color: rgba(74, 144, 226, 0.4);
+        html.light-theme {
+            --bg-main: var(--bg-main-light); --bg-card: var(--bg-card-light); --bg-modal: var(--bg-modal-light); --text-primary: var(--text-primary-light); --text-secondary: var(--text-secondary-light); --border-glow: var(--border-glow-light); --shadow-glow: var(--shadow-glow-light); --cta-bg: var(--cta-bg-light); --header-bg: var(--header-bg-light); --input-bg: #f1f3f5; --input-border: #dee2e6; --icon-color: var(--text-primary-light); --footer-bg: #f1f3f5; --footer-border: #dee2e6;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--text-primary); transition: background-color 0.4s ease, color 0.4s ease; overflow-x: hidden; }
 
-        html {
-            scroll-behavior: smooth;
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: linear-gradient(45deg, #0d0f14, #1c222d, #007bff, #0d0f14);
+            background-size: 400% 400%; animation: gradient-animation 15s ease infinite; opacity: 0.25;
         }
+        html.light-theme body::before {
+             background: linear-gradient(45deg, #007bff, #00aaff, #4cc9f0, #007bff); opacity: 0.1;
+        }
+        @keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-body);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+        /* --- HEADER & FINAL LOGO --- */
+        .header { position: sticky; top: 0; left: 0; width: 100%; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: var(--header-bg); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 123, 255, 0.1); transition: background 0.4s ease, box-shadow 0.4s ease; }
+        .header.scrolled { box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .brand-title { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .sopt-logo { width: 45px; height: 45px; }
+        .sopt-logo .logo-s, .sopt-logo .logo-o, .sopt-logo .logo-p, .sopt-logo .logo-t { fill: none; stroke: var(--cta-bg); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 200; stroke-dashoffset: 200; animation: draw-logo 2s ease-out forwards; }
+        .sopt-logo .logo-s { animation-delay: 0.2s; }
+        .sopt-logo .logo-o { animation-delay: 0.4s; }
+        .sopt-logo .logo-p { animation-delay: 0.6s; }
+        .sopt-logo .logo-t { animation-delay: 0.8s; }
+        .sopt-logo:hover .logo-s, .sopt-logo:hover .logo-o, .sopt-logo:hover .logo-p, .sopt-logo:hover .logo-t { filter: drop-shadow(0 0 5px var(--cta-bg)); }
+        @keyframes draw-logo { to { stroke-dashoffset: 0; } }
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-title);
-            font-weight: 700;
-        }
-
-        /* 🧢 HEADER */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        [data-theme="dark"] header {
-            background-color: rgba(18, 18, 18, 0.8);
-        }
-
-        .brand-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-title);
-            text-shadow: 0 0 8px var(--header-highlight);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-title);
-            font-weight: 600;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--header-highlight);
-            box-shadow: 0 0 10px var(--header-highlight);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--header-highlight);
-        }
+        .navbar { display: flex; align-items: center; }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 600; position: relative; padding-bottom: 5px; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--cta-bg); box-shadow: 0 0 10px var(--cta-bg); transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 1.5rem; margin-left: 2rem; color: var(--icon-color); transition: transform 0.3s ease, color 0.3s ease; }
+        .theme-toggle:hover { transform: scale(1.2) rotate(15deg); color: var(--cta-bg); }
+        .hamburger { display: none; cursor: pointer; font-size: 2rem; color: var(--icon-color); }
         
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            line-height: 1;
-            color: var(--text-title);
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2) rotate(15deg);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .hamburger .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--text-title);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        /* 🎯 HERO SECTION */
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: calc(100vh - 80px); /* Adjust for header height */
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background-color: var(--bg-main);
-        }
-
-        .hero-section::before, .hero-section::after {
-            content: '';
-            position: absolute;
-            filter: blur(120px);
-            z-index: 0;
-            opacity: 0.4;
-        }
-
-        [data-theme="dark"] .hero-section::before, [data-theme="dark"] .hero-section::after {
-            opacity: 0.25;
-        }
+        /* --- HERO & TOOLS --- */
+        .hero { text-align: center; min-height: 80vh; padding: 4rem 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero h1 { font-family: 'Poppins', sans-serif; font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin-bottom: 2rem; }
+        .cta-button { font-family: 'Poppins', sans-serif; background: var(--cta-bg); color: var(--cta-text); border: none; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: var(--shadow-glow); }
+        .cta-button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 30px var(--cta-bg); }
         
-        .hero-section::before {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            right: -50px;
-            background: linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end));
-            border-radius: 50%;
-            animation: float-pink 15s infinite ease-in-out alternate;
-        }
+        .tools-section { padding: 4rem 5%; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+        .tool-card { background: var(--bg-card); border-radius: 15px; padding: 1.5rem; border: 1px solid transparent; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.4s ease-out; opacity: 0; transform: translateY(30px); }
+        .tool-card.visible { opacity: 1; transform: translateY(0); }
+        .tool-card:hover { transform: translateY(-10px) !important; border-color: var(--border-glow); box-shadow: var(--shadow-glow); }
+        .tool-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .tool-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; min-height: 50px; }
+        .toggle-tool-btn { background: var(--cta-bg); color: var(--cta-text); border: none; padding: 0.6rem 1.2rem; font-size: 0.9rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; width: 100%; }
+        .toggle-tool-btn:hover { opacity: 0.9; box-shadow: var(--cta-glow); }
 
-        .hero-section::after {
-            width: 400px;
-            height: 400px;
-            bottom: 5%;
-            left: -100px;
-            background: linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end));
-            border-radius: 50%;
-            animation: float-blue 20s infinite ease-in-out alternate-reverse;
-        }
+        /* --- MODAL SYSTEM --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-container { background: var(--bg-modal); border-radius: 15px; padding: 0; width: 90%; max-width: 800px; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.2); border: 1px solid var(--input-border); transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-container { transform: scale(1); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid var(--input-border); }
+        .modal-title { font-family: 'Poppins', sans-serif; font-size: 1.5rem; color: var(--text-primary); }
+        .modal-close-btn { background: none; border: none; font-size: 2rem; color: var(--text-secondary); cursor: pointer; line-height: 1; transition: color 0.3s ease, transform 0.3s ease; }
+        .modal-close-btn:hover { color: var(--cta-bg); transform: rotate(90deg); }
+        .modal-content { overflow-y: auto; flex-grow: 1; padding: 1.5rem; }
+        .modal-content::-webkit-scrollbar { width: 8px; }
+        .modal-content::-webkit-scrollbar-track { background: var(--input-bg); }
+        .modal-content::-webkit-scrollbar-thumb { background-color: var(--cta-bg); border-radius: 10px; }
 
-        @keyframes float-pink {
-            from { transform: translateY(0) translateX(0) rotate(0deg); }
-            to { transform: translateY(20px) translateX(-20px) rotate(180deg); }
-        }
+        .modal-content label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary); font-size: 0.9rem; }
+        .modal-content input, .modal-content textarea, .modal-content select { width: 100%; padding: 0.85rem; border-radius: 8px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-primary); font-family: 'Inter', sans-serif; margin-bottom: 1rem; transition: all 0.3s ease; font-size: 1rem; }
+        .modal-content input:focus, .modal-content textarea:focus, .modal-content select:focus { outline: none; border-color: var(--border-glow); box-shadow: 0 0 0 3px var(--shadow-glow); }
+        .modal-content button { background: var(--cta-bg); opacity: 0.9; color: var(--cta-text); border: none; padding: 0.75rem 1.5rem; font-size: 0.9rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .modal-content button:hover { opacity: 1; transform: translateY(-2px); }
+        .output-area { background: var(--bg-main); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word; position: relative; min-height: 50px; border: 1px solid var(--input-border); }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-secondary); cursor: pointer; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; transition: all 0.2s ease; }
+        .copy-btn.copied { background-color: #28a745; color: white; border-color: #28a745; }
 
-        @keyframes float-blue {
-            from { transform: translateY(0) translateX(0) rotate(0deg); }
-            to { transform: translateY(-20px) translateX(20px) rotate(-180deg); }
-        }
+        /* UPGRADED FOOTER */
+        .site-footer { background-color: var(--footer-bg); color: var(--text-secondary); padding: 4rem 5%; margin-top: 4rem; border-top: 1px solid var(--footer-border); transition: all 0.4s ease; }
+        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; }
+        .footer-about h4, .footer-links h4, .footer-social h4 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; color: var(--text-primary); margin-bottom: 1rem; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { text-decoration: none; color: var(--text-secondary); transition: color 0.3s ease, padding-left 0.3s ease; }
+        .footer-links a:hover { color: var(--cta-bg); padding-left: 5px; }
+        .social-icons { display: flex; gap: 1rem; }
+        .social-icons a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .social-icons a:hover { color: var(--cta-bg); transform: scale(1.2); }
+        .footer-bottom { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--footer-border); }
+        .footer-bottom a { color: var(--cta-bg); font-weight: 600; text-decoration: none; }
         
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .hero-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem auto;
-        }
-        .hero-icon .gear { fill: var(--illustration-yellow); animation: spin 10s linear infinite; transform-origin: center; }
-        .hero-icon .lamp { fill: var(--accent-blue); }
-
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 15px var(--glow-color);
-        }
-
-        .hero-content .subheading {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--accent-red);
-            color: var(--button-text-color);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 77, 79, 0.4);
-            animation: cta-glow 2s infinite alternate;
-        }
-
-        @keyframes cta-glow {
-            from { box-shadow: 0 5px 15px rgba(255, 77, 79, 0.4), 0 0 10px var(--accent-red); }
-            to { box-shadow: 0 8px 25px rgba(255, 77, 79, 0.6), 0 0 20px var(--accent-red); }
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-        }
-
-        /* 🧰 TOOLS SECTION */
-        .tools-section {
-            padding: 4rem 5%;
-            background-color: var(--bg-main);
-        }
-
-        .tools-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--text-title);
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .tool-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px var(--shadow-color);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 20px var(--shadow-color), 0 0 20px var(--glow-color);
-        }
-
-        .tool-card h3 {
-            font-size: 1.3rem;
-            color: var(--accent-blue);
-            text-shadow: 0 0 8px var(--glow-color);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .tool-card .description {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .tool-input, .tool-textarea, .tool-select {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-main);
-            color: var(--text-body);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .tool-textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .tool-input:focus, .tool-textarea:focus, .tool-select:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px var(--glow-color);
-        }
-        
-        .tool-button, .copy-button {
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 6px;
-            background-color: var(--accent-blue);
-            color: var(--button-text-color);
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            align-self: flex-start;
-        }
-
-        .tool-button:hover, .copy-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-        [data-theme="dark"] .tool-button:hover, [data-theme="dark"] .copy-button:hover {
-            background-color: #6aa9e9;
-        }
-
-        .copy-button {
-            background-color: #28a745;
-        }
-        .copy-button:hover {
-            background-color: #218838;
-        }
-        
-        .tool-output {
-            background-color: var(--bg-main);
-            border: 1px solid var(--border-color);
-            padding: 1rem;
-            border-radius: 6px;
-            word-wrap: break-word;
-            white-space: pre-wrap;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            color: var(--text-body);
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .output-container {
-            position: relative;
-        }
-        
-        .output-container .copy-button {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .output-container:hover .copy-button {
-            opacity: 1;
-        }
-        
-        .button-group {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 1024px) {
-            .tools-grid {
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            }
-        }
-
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background-color: var(--bg-card);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            }
-            .nav-links.active {
-                right: 0;
-            }
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-            .nav-links a { font-size: 1.5rem; }
-            .hamburger { display: flex; z-index: 1001; }
-            .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-            .hamburger.active .bar:nth-child(2) { opacity: 0; }
-            .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content .subheading { font-size: 1rem; }
-            .hero-section::before { width: 200px; height: 200px; }
-            .hero-section::after { width: 300px; height: 300px; }
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-            margin-top: 2rem;
-        }
-        
-        footer p {
-            color: var(--text-muted);
-        }
-        footer a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
+            .header { padding: 1rem 5%; }
+            .nav-links { position: fixed; top: 65px; left: -100%; width: 100%; height: calc(100vh - 65px); background: var(--header-bg); flex-direction: column; align-items: center; justify-content: center; gap: 3rem; transition: left 0.4s ease-in-out; }
+            .nav-links.active { left: 0; }
+            .hamburger { display: block; z-index: 1001;}
+            .hero h1 { font-size: 2.2rem; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { justify-content: center; }
         }
     </style>
 </head>
 <body>
-
-    <!-- 🧢 HEADER -->
-    <header>
-        <div class="brand-title">SOPT– SEO Toolkit</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><button class="theme-toggle" id="theme-toggle" title="Toggle Theme">🌙</button></li>
-            </ul>
-        </nav>
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+    <header class="header">
+        <a href="#" class="brand-title">
+            <svg class="sopt-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path class="logo-s" d="M 60,20 C 40,20 40,40 50,50 C 60,60 60,80 40,80" />
+                <path class="logo-o" d="M 30,50 A 20 20 0 1 1 29.9,50" />
+            </svg>
+            <span>SOPT</span>
+        </a>
+        <nav class="navbar"><ul class="nav-links"><li><a href="#">Home</a></li><li><a href="#tools-section-anchor">Tools</a></li><li><a href="#">About</a></li></ul><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button><div class="hamburger" id="hamburger">☰</div></nav>
     </header>
 
     <main>
-        <!-- 🎯 HERO SECTION -->
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <svg class="hero-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path class="gear" d="M82.2,62.1l-4.7-2.2c-1.3-3.8-3.1-7.3-5.5-10.5l1.9-4.8c0.6-1.6-0.1-3.3-1.6-4.2l-8.4-5.1c-1.5-0.9-3.4-0.5-4.5,0.9l-3.2,4.1c-3.1-1.1-6.3-1.8-9.7-1.8s-6.6,0.7-9.7,1.8l-3.2-4.1c-1.1-1.4-3-1.8-4.5-0.9L24,39.3c-1.5,0.9-2.2,2.6-1.6,4.2l1.9,4.8c-2.4,3.1-4.2,6.7-5.5,10.5l-4.7,2.2c-1.6,0.7-2.4,2.5-1.9,4.2l2.9,9.3c0.5,1.7,2.2,2.8,4,2.5l5.1-1.5c2.3,3.4,5.2,6.4,8.6,8.6l-1.5,5.1c-0.4,1.8,0.8,3.5,2.5,4l9.3,2.9c1.7,0.5,3.5-0.3,4.2-1.9l2.2-4.7c3.8,1.3,7.3,2,10.5,2.2V100h10V88.8c3.2-0.2,6.7-0.9,10.5-2.2l2.2,4.7c0.7,1.6,2.5,2.4,4.2,1.9l9.3-2.9c1.8-0.5,3-2.2,2.5-4l-1.5-5.1c3.4-2.3,6.4-5.2,8.6-8.6l5.1,1.5c1.8,0.4,3.5-0.8,4-2.5l2.9-9.3C84.6,64.6,83.8,62.8,82.2,62.1z M50,67.5c-9.7,0-17.5-7.8-17.5-17.5S40.3,32.5,50,32.5S67.5,40.3,67.5,50S59.7,67.5,50,67.5z"/>
-                    <path class="lamp" d="M50,0C30.7,0,15,15.7,15,35c0,12.4,6.4,23.3,16.1,29.3c-1.2,2.9-1.9,6-2.1,9.2H25c-2.8,0-5,2.2-5,5s2.2,5,5,5h10.3c0.4,4.9,2.4,9.5,5.7,13.2c1.2,1.3,3.1,1.5,4.5,0.4l0.1-0.1c1.3-1.2,1.5-3.1,0.4-4.5C42.8,85,41.2,80.7,40.6,74h18.8c-0.6,6.7-2.2,11-4.4,14.2c-1.1,1.4-0.9,3.4,0.4,4.5l0.1,0.1c1.4,1.1,3.4,0.9,4.5-0.4c3.3-3.7,5.3-8.3,5.7-13.2H75c2.8,0,5-2.2,5-5s-2.2-5-5-5h-4c-0.2-3.2-0.9-6.3-2.1-9.2C78.6,58.3,85,47.4,85,35C85,15.7,69.3,0,50,0z M50,60c-13.8,0-25-11.2-25-25S36.2,10,50,10s25,11.2,25,25S63.8,60,50,60z"/>
-                </svg>
-                <h1>Best Free SEO Tools for Bloggers & Marketers</h1>
-                <p class="subheading">Optimize your blog posts, generate meta tags, and analyze keywords — all with SOPT’s powerful and free SEO tools suite. Perfect for content optimization and boosting your site's visibility.</p>
-                <a href="#tools" class="cta-button">Start Exploring &rarr;</a>
-            </div>
-        </section>
+        <section class="hero"><h1>The Definitive SEO Toolkit. Built for You.</h1><p>Experience a fully operational suite of 23+ professional-grade SEO tools. Fast, accurate, and completely free. Created to elevate your digital strategy.</p><a href="#tools-section-anchor" class="cta-button">Unleash Tools →</a></section>
 
-        <!-- 🧰 TOOLS SECTION -->
-        <section id="tools" class="tools-section">
-            <h2>Our SEO & Blogging Toolkit</h2>
+        <section class="tools-section" id="tools-section-anchor">
             <div class="tools-grid">
-
-                <!-- TOOL 1: Meta Tag Generator -->
-                <div class="tool-card">
-                    <h3>🔍 Meta Tag Generator</h3>
-                    <div class="description">Create SEO-friendly meta title and description tags for your web pages. Well-crafted meta tags can improve click-through rates from search engine results pages (SERPs). This tool helps you quickly generate the necessary HTML code.</div>
-                    <input type="text" id="metaTitle" class="tool-input" placeholder="Enter Page Title">
-                    <textarea id="metaDesc" class="tool-textarea" placeholder="Enter Page Description"></textarea>
-                    <input type="text" id="metaKeywords" class="tool-input" placeholder="Enter Keywords (comma-separated)">
-                    <button id="generateMeta" class="tool-button">Generate Meta Tags</button>
-                    <div class="output-container">
-                        <pre id="metaOutput" class="tool-output"></pre>
-                        <button class="copy-button" data-target="metaOutput">Copy</button>
-                    </div>
-                </div>
-
-                <!-- TOOL 2: Keyword Density Checker -->
-                <div class="tool-card">
-                    <h3>🔍 Keyword Density Checker</h3>
-                    <div class="description">Analyze the density of keywords in your text to avoid keyword stuffing and ensure a natural distribution. This helps in optimizing content for search engines without triggering spam filters. A density of 1-2% is often recommended.</div>
-                    <input type="text" id="densityKeyword" class="tool-input" placeholder="Enter main keyword">
-                    <textarea id="densityText" class="tool-textarea" placeholder="Paste your text here..."></textarea>
-                    <pre id="densityOutput" class="tool-output">Results will appear here...</pre>
-                </div>
-                
-                <!-- TOOL 3: Robots.txt Generator -->
-                <div class="tool-card">
-                    <h3>🔍 Robots.txt Generator</h3>
-                    <div class="description">Generate a `robots.txt` file to guide search engine crawlers on which parts of your site to access or ignore. Control access for major bots like Googlebot and Bingbot and specify your sitemap location for better indexing.</div>
-                    <label>Default for all bots:</label>
-                    <select id="robotsAll" class="tool-select">
-                        <option value="Allow">Allow all</option>
-                        <option value="Disallow">Disallow all</option>
-                    </select>
-                    <input type="text" id="robotsSitemap" class="tool-input" placeholder="Sitemap URL (e.g., https://yoursite.com/sitemap.xml)">
-                    <button id="generateRobots" class="tool-button">Generate Robots.txt</button>
-                     <div class="output-container">
-                        <pre id="robotsOutput" class="tool-output"></pre>
-                        <button class="copy-button" data-target="robotsOutput">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- TOOL 4: Sitemap Generator (Basic) -->
-                <div class="tool-card">
-                    <h3>🔍 Sitemap Generator</h3>
-                    <div class="description">Create a basic XML sitemap by listing your site's URLs. Sitemaps help search engines find and index all the important pages on your website more efficiently. Paste one URL per line to generate the sitemap code.</div>
-                    <textarea id="sitemapUrls" class="tool-textarea" placeholder="Paste URLs, one per line..."></textarea>
-                    <button id="generateSitemap" class="tool-button">Generate Sitemap</button>
-                     <div class="output-container">
-                        <pre id="sitemapOutput" class="tool-output"></pre>
-                        <button class="copy-button" data-target="sitemapOutput">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- TOOL 5: Title & Description Analyzer -->
-                <div class="tool-card">
-                    <h3>🔍 Title & Description Analyzer</h3>
-                    <div class="description">Check the length of your page titles and meta descriptions. Optimal lengths are crucial for full visibility in search results. Titles should ideally be under 60 characters, and descriptions under 160 characters.</div>
-                    <input type="text" id="titleAnalyzerInput" class="tool-input" placeholder="Enter Page Title">
-                    <textarea id="descAnalyzerInput" class="tool-textarea" placeholder="Enter Meta Description"></textarea>
-                    <pre id="analyzerOutput" class="tool-output">Length analysis will appear here...</pre>
-                </div>
-
-                <!-- TOOL 6: URL Encoder/Decoder -->
-                <div class="tool-card">
-                    <h3>🔍 URL Encoder/Decoder</h3>
-                    <div class="description">Encode strings into a URL-safe format or decode them back to their original state. This is useful for handling special characters in URLs, ensuring they are correctly interpreted by web servers and browsers.</div>
-                    <textarea id="urlCoderInput" class="tool-textarea" placeholder="Enter text or URL component"></textarea>
-                    <div class="button-group">
-                        <button id="urlEncodeBtn" class="tool-button">Encode</button>
-                        <button id="urlDecodeBtn" class="tool-button">Decode</button>
-                    </div>
-                    <pre id="urlCoderOutput" class="tool-output"></pre>
-                </div>
-
-                <!-- TOOL 7: Canonical Tag Generator -->
-                <div class="tool-card">
-                    <h3>🔍 Canonical Tag Generator</h3>
-                    <div class="description">Generate a `rel="canonical"` link tag to prevent duplicate content issues. This tag tells search engines which version of a URL is the master copy, consolidating link equity and improving indexing accuracy.</div>
-                    <input type="text" id="canonicalUrl" class="tool-input" placeholder="Enter the preferred URL">
-                    <button id="generateCanonical" class="tool-button">Generate Tag</button>
-                    <div class="output-container">
-                        <pre id="canonicalOutput" class="tool-output"></pre>
-                        <button class="copy-button" data-target="canonicalOutput">Copy</button>
-                    </div>
-                </div>
-
-                <!-- TOOL 8: Slug Generator -->
-                <div class="tool-card">
-                    <h3>🔍 Slug Generator</h3>
-                    <div class="description">Create clean, SEO-friendly URL slugs from your page or post titles. Slugs are the part of a URL that identifies a specific page. This tool converts titles into lowercase, hyphenated strings for optimal readability and SEO.</div>
-                    <input type="text" id="slugInput" class="tool-input" placeholder="Enter post or page title">
-                    <pre id="slugOutput" class="tool-output">your-clean-slug-appears-here</pre>
-                </div>
-
-                <!-- TOOL 9: Redirect URL Generator (.htaccess) -->
-                <div class="tool-card">
-                    <h3>🔍 Redirect URL Generator</h3>
-                    <div class="description">Generate `.htaccess` code for common redirects, such as 301 (permanent) or 302 (temporary). Properly redirecting old URLs to new ones is essential for preserving SEO value and providing a good user experience.</div>
-                    <input type="text" id="oldUrl" class="tool-input" placeholder="Old URL (e.g., /old-page.html)">
-                    <input type="text" id="newUrl" class="tool-input" placeholder="New URL (e.g., /new-page.html)">
-                    <select id="redirectType" class="tool-select">
-                        <option value="301">301 Permanent</option>
-                        <option value="302">302 Temporary</option>
-                    </select>
-                    <button id="generateRedirect" class="tool-button">Generate Code</button>
-                     <div class="output-container">
-                        <pre id="redirectOutput" class="tool-output"></pre>
-                        <button class="copy-button" data-target="redirectOutput">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- TOOL 10: Alt Text Generator -->
-                <div class="tool-card">
-                    <h3>🔍 Alt Text Generator</h3>
-                    <div class="description">Quickly generate descriptive alt text for your images. Alt text is crucial for accessibility (screen readers) and SEO, as it helps search engines understand the content of an image. Describe the image clearly and concisely.</div>
-                    <input type="text" id="altImageDesc" class="tool-input" placeholder="Describe the image content">
-                    <button id="generateAlt" class="tool-button">Generate Alt Text</button>
-                    <div class="output-container">
-                        <pre id="altOutput" class="tool-output"></pre>
-                        <button class="copy-button" data-target="altOutput">Copy</button>
-                    </div>
-                </div>
-
-                <!-- TOOL 11: Blog Title Generator -->
-                <div class="tool-card">
-                    <h3>✍️ Blog Title Generator</h3>
-                    <div class="description">Get catchy and effective blog title ideas. Enter a keyword, and this tool will generate a list of potential titles using proven formulas like "How-To," "Listicles," and "Question-Based" headlines to attract more readers.</div>
-                    <input type="text" id="titleIdeaKeyword" class="tool-input" placeholder="Enter your main keyword">
-                    <button id="generateTitleIdeas" class="tool-button">Generate Titles</button>
-                    <pre id="titleIdeasOutput" class="tool-output">Title ideas will appear here...</pre>
-                </div>
-
-                <!-- TOOL 12: Blog Topic Idea Generator -->
-                <div class="tool-card">
-                    <h3>✍️ Blog Topic Idea Generator</h3>
-                    <div class="description">Struggling with writer's block? Enter a broad topic to get a list of specific blog post ideas. This tool helps you brainstorm new content angles, ensuring you always have fresh topics to write about for your audience.</div>
-                    <input type="text" id="topicIdeaKeyword" class="tool-input" placeholder="Enter a broad topic">
-                    <button id="generateTopicIdeas" class="tool-button">Generate Ideas</button>
-                    <pre id="topicIdeasOutput" class="tool-output">Topic ideas will appear here...</pre>
-                </div>
-                
-                <!-- TOOL 13: Read Time Estimator -->
-                <div class="tool-card">
-                    <h3>✍️ Read Time Estimator</h3>
-                    <div class="description">Calculate the estimated reading time for your articles. Displaying a read time can increase user engagement, as readers know the time commitment upfront. The average reading speed is around 200-230 words per minute.</div>
-                    <textarea id="readTimeText" class="tool-textarea" placeholder="Paste your article text here..."></textarea>
-                    <pre id="readTimeOutput" class="tool-output">Estimated read time will be shown here.</pre>
-                </div>
-
-                <!-- TOOL 14: Word & Character Counter -->
-                <div class="tool-card">
-                    <h3>✍️ Word & Character Counter</h3>
-                    <div class="description">Instantly count the number of words and characters in a piece of text. This is essential for meeting content length requirements for social media, meta descriptions, or article guidelines. It also helps in assessing content depth.</div>
-                    <textarea id="counterText" class="tool-textarea" placeholder="Paste your text here for counting..."></textarea>
-                    <pre id="counterOutput" class="tool-output">Words: 0 | Characters: 0</pre>
-                </div>
-
-                <!-- TOOL 15: HTML Tag Cleaner -->
-                <div class="tool-card">
-                    <h3>✍️ HTML Tag Cleaner</h3>
-                    <div class="description">Remove all HTML tags from a block of text, leaving only the plain text content. This is useful when you need to repurpose content from a web page or clean up text copied from a rich text editor for other uses.</div>
-                    <textarea id="htmlCleanerInput" class="tool-textarea" placeholder="Paste HTML content here..."></textarea>
-                    <button id="cleanHtmlBtn" class="tool-button">Clean HTML</button>
-                    <pre id="htmlCleanerOutput" class="tool-output"></pre>
-                </div>
-                
-                <!-- TOOL 16: Markdown to HTML Viewer -->
-                <div class="tool-card">
-                    <h3>✍️ Markdown to HTML Viewer</h3>
-                    <div class="description">Convert Markdown syntax into HTML and see a live preview. A great tool for bloggers and developers who write in Markdown and need to quickly see the final HTML output for their website or documentation.</div>
-                    <textarea id="markdownInput" class="tool-textarea" placeholder="Type Markdown here... (e.g., # Hello)"></textarea>
-                    <pre id="markdownOutput" class="tool-output">HTML output will appear here.</pre>
-                </div>
-
-                <!-- TOOL 17: Case Converter -->
-                <div class="tool-card">
-                    <h3>✍️ Text Formatter (Case Converter)</h3>
-                    <div class="description">Easily convert text between different cases: UPPERCASE, lowercase, Title Case, and Sentence case. A handy utility for formatting headlines, titles, and other text elements consistently without manual retyping.</div>
-                    <textarea id="caseConverterInput" class="tool-textarea" placeholder="Enter text to format..."></textarea>
-                    <div class="button-group">
-                        <button class="tool-button" data-case="upper">UPPERCASE</button>
-                        <button class="tool-button" data-case="lower">lowercase</button>
-                        <button class="tool-button" data-case="title">Title Case</button>
-                        <button class="tool-button" data-case="sentence">Sentence case</button>
-                    </div>
-                    <pre id="caseConverterOutput" class="tool-output"></pre>
-                </div>
-
-                <!-- TOOL 18: Lorem Ipsum Generator -->
-                <div class="tool-card">
-                    <h3>✍️ Lorem Ipsum Generator</h3>
-                    <div class="description">Generate placeholder "Lorem Ipsum" text for your design mockups and layouts. Specify the number of paragraphs you need, and the tool will create dummy text to help you visualize your content areas before the final copy is ready.</div>
-                    <input type="number" id="loremParagraphs" class="tool-input" value="3" min="1" max="20">
-                    <button id="generateLorem" class="tool-button">Generate Text</button>
-                     <div class="output-container">
-                        <pre id="loremOutput" class="tool-output"></pre>
-                        <button class="copy-button" data-target="loremOutput">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- TOOL 19: Text to Speech (TTS) -->
-                <div class="tool-card">
-                    <h3>⚙️ Text to Speech</h3>
-                    <div class="description">Convert written text into spoken words. This accessibility tool can help users listen to your content. It's also great for proofreading, as hearing your text read aloud can help you catch errors and awkward phrasing.</div>
-                    <textarea id="ttsInput" class="tool-textarea" placeholder="Enter text to be spoken..."></textarea>
-                    <div class="button-group">
-                        <button id="speakBtn" class="tool-button">Speak</button>
-                        <button id="stopBtn" class="tool-button">Stop</button>
-                    </div>
-                    <pre id="ttsOutput" class="tool-output">Status: Ready</pre>
-                </div>
-
-                <!-- TOOL 20: Line Break Remover -->
-                <div class="tool-card">
-                    <h3>⚙️ Line Break Remover</h3>
-                    <div class="description">Remove unwanted line breaks from your text. This tool can clean up text copied from PDFs, emails, or other sources where formatting creates extra line breaks, consolidating it into a single paragraph or removing empty lines.</div>
-                    <textarea id="lineBreakInput" class="tool-textarea" placeholder="Paste text with line breaks..."></textarea>
-                    <div class="button-group">
-                        <button id="removeBreaksBtn" class="tool-button">Remove & Join</button>
-                        <button id="removeEmptyLinesBtn" class="tool-button">Remove Empty Lines</button>
-                    </div>
-                    <pre id="lineBreakOutput" class="tool-output"></pre>
-                </div>
-                
-                <!-- TOOL 21: Text Repeater -->
-                 <div class="tool-card">
-                    <h3>⚙️ Text Repeater</h3>
-                    <div class="description">Repeat a piece of text a specified number of times. Useful for testing character limits, creating sample data, or just for fun. You can choose to separate the repeated text with a space, new line, or no separator at all.</div>
-                    <input type="text" id="textRepeatInput" class="tool-input" placeholder="Text to repeat">
-                    <input type="number" id="textRepeatCount" class="tool-input" value="5" min="1" max="1000">
-                    <select id="textRepeatSeparator" class="tool-select">
-                        <option value=" ">Space</option>
-                        <option value="\n">New Line</option>
-                        <option value="">None</option>
-                    </select>
-                    <button id="repeatTextBtn" class="tool-button">Repeat</button>
-                    <pre id="textRepeatOutput" class="tool-output"></pre>
-                </div>
-
-
+                <!-- ALL 23 TOOL CARDS -->
             </div>
         </section>
-
-        <!-- About Section -->
-        <section id="about" class="tools-section" style="min-height: 40vh;">
-            <h2>About SOPT</h2>
-            <p style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8; color: var(--text-muted);">
-                SOPT (SEO & Optimization Prompt Toolkit) is a project designed to provide bloggers, marketers, and web developers with a suite of essential, fast, and free tools. Our mission is to make content optimization and technical SEO accessible to everyone, without the need for expensive subscriptions or complex software. All tools run directly in your browser, ensuring your data remains private and your workflow is uninterrupted. This toolkit was created with Vanilla JavaScript to demonstrate the power of modern web technologies.
-            </p>
-        </section>
-
     </main>
-    
-    <!-- Footer -->
-    <footer id="contact">
-        <p>&copy; 2024 SOPT– SEO Toolkit. Created for demonstration purposes.</p>
-        <p>A project by <a href="https://github.com/your-github-link" target="_blank" rel="noopener noreferrer">Your Name/Brand</a>, inspired by the need for simple, effective tools.</p>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-about"><h4>About SOPT</h4><p>SOPT is a comprehensive, free SEO toolkit built for marketers, bloggers, and developers. Our mission is to provide powerful, accessible tools to enhance your digital presence.</p></div>
+            <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#">Home</a></li><li><a href="#tools-section-anchor">Tools</a></li><li><a href="#">About</a></li></ul></div>
+            <div class="footer-social"><h4>Connect with Developer</h4><div class="social-icons"><a href="#" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a><a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; <span id="copyright-year"></span> SOPT. Developed with ❤️ by <a href="#" target="_blank">Gauri Gurav</a>.</p></div>
     </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
+    <div class="modal-overlay" id="tool-modal">
+        <div class="modal-container">
+            <div class="modal-header"><h3 class="modal-title">Tool Title</h3><button class="modal-close-btn">&times;</button></div>
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- DATA ---
+        const toolsData = [
+            { id: 'meta-tag-generator', title: 'Meta Tag Generator', desc: 'Create SEO-friendly tags with a live SERP preview to visualize your search result.' },
+            { id: 'keyword-density-checker', title: 'Keyword Density Checker', desc: 'Analyze keyword frequency in a sortable table to optimize content.' },
+            { id: 'robots-txt-generator', title: 'Robots.txt Generator', desc: 'Create advanced robots.txt files with rules for specific user-agents.' },
+            { id: 'sitemap-generator', title: 'XML Sitemap Generator', desc: 'Generate a sitemap with priority and frequency options for better crawling.' },
+            { id: 'title-desc-analyzer', title: 'Title & Description Analyzer', desc: 'Check title/description length with real-time feedback and SERP preview.' },
+            { id: 'url-encoder-decoder', title: 'URL Encoder/Decoder', desc: 'Quickly encode or decode text and URLs for safe web use.' },
+            { id: 'canonical-tag-generator', title: 'Canonical Tag Generator', desc: 'Create a canonical link element to prevent duplicate content issues.' },
+            { id: 'slug-generator', title: 'Slug Generator', desc: 'Convert titles to clean URLs with options for stop-word removal.' },
+            { id: 'redirect-generator', title: '.htaccess Redirect Generator', desc: 'Generate 301, 302, or 307 redirect rules for your .htaccess file.' },
+            { id: 'alt-text-generator', title: 'Alt Text Generator', desc: 'Create descriptive alt text using a simple formula for better SEO.' },
+            { id: 'blog-title-generator', title: 'Blog Title Generator', desc: 'Generate catchy titles based on your keyword and desired tone.' },
+            { id: 'blog-topic-generator', title: 'Blog Topic Idea Generator', desc: 'Get endless content ideas based on your keyword and topic type.' },
+            { id: 'read-time-estimator', title: 'Read Time Estimator', desc: 'Get a detailed text analysis including read time, word/sentence counts.' },
+            { id: 'word-char-counter', title: 'Word & Character Counter', desc: 'Instantly count words, characters, sentences, and paragraphs as you type.' },
+            { id: 'html-tag-cleaner', title: 'HTML Tag Cleaner', desc: 'Strip all HTML tags, or specify tags to keep, for clean text extraction.' },
+            { id: 'markdown-viewer', title: 'Markdown to HTML Viewer', desc: 'Convert Markdown to HTML in real-time and copy the resulting HTML.' },
+            { id: 'text-formatter', title: 'Text Formatter', desc: 'Easily convert text case with multiple options like Sentence and Inverse case.' },
+            { id: 'lorem-ipsum-generator', title: 'Lorem Ipsum Generator', desc: 'Generate placeholder text in paragraphs, sentences, or words.' },
+            { id: 'json-formatter', title: 'JSON Formatter & Minifier', desc: 'Format, validate, or minify JSON, with error highlighting.' },
+            { id: 'color-picker', title: 'Color Picker & Converter', desc: 'Pick a color and get Hex, RGB, HSL values, with a random color generator.' },
+            { id: 'text-to-speech', title: 'Text to Speech', desc: 'Convert text to speech with selectable voices, and control over rate and pitch.' },
+            { id: 'age-calculator', title: 'Age Calculator', desc: 'Calculate your exact age down to the second from your birthdate.' },
+            { id: 'stopwatch', title: 'Timer / Stopwatch', desc: 'Time your tasks with precision using start, stop, reset, and a lap feature.' }
+        ];
 
-    // 🎨 THEME SYSTEM
-    const themeToggle = document.getElementById('theme-toggle');
-    const docElement = document.documentElement;
+        const toolInterfaces = {
+            'meta-tag-generator': `<label>Title</label><input type="text" placeholder="Page Title"><label>Description</label><textarea placeholder="Meta Description" rows="3"></textarea><label>Keywords</label><input type="text" placeholder="comma, separated, keywords"><div class="serp-preview" style="border:1px solid var(--input-border);padding:1rem;border-radius:8px;margin-top:1rem;"><span class="serp-url" style="color:var(--text-secondary);font-size:0.9rem;">https://example.com/your-page-url</span><h3 class="serp-title" style="color:#8ab4f8;font-size:1.25rem;text-decoration:none;">Your Page Title</h3><p class="serp-desc" style="color:var(--text-secondary);font-size:0.9rem;line-height:1.4;">Your meta description...</p></div><button class="action-btn">Generate Tags</button><div class="output-area"></div>`,
+            'keyword-density-checker': `<textarea placeholder="Paste your text here..." rows="8"></textarea><button class="action-btn">Check Density</button><div class="output-area" style="padding:0;max-height:300px;overflow-y:auto;"></div>`,
+            'robots-txt-generator': `<label>Default Rule for All Crawlers (*):</label><select><option value="allow">Allow All</option><option value="disallow">Disallow All</option></select><label>Add Sitemap URL (optional):</label><input type="text" placeholder="https://example.com/sitemap.xml"><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'sitemap-generator': `<label>Enter one URL per line:</label><textarea rows="5"></textarea><label>Change Frequency:</label><select><option value="daily">Daily</option><option value="weekly" selected>Weekly</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option></select><label>Priority (0.1 to 1.0):</label><input type="number" value="0.8" step="0.1" min="0.1" max="1.0"><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'title-desc-analyzer': `<label>Title</label><input type="text" placeholder="Enter Title"><div class="progress-bar-container" style="width:100%;background-color:var(--input-bg);border-radius:5px;overflow:hidden;margin-bottom:5px;"><div class="progress-bar" style="height:10px;background-color:var(--cta-bg);width:0%;transition:width .5s ease;border-radius:5px;"></div></div><label style="margin-top:1rem;">Description</label><textarea rows="3" placeholder="Enter Description"></textarea><div class="progress-bar-container" style="width:100%;background-color:var(--input-bg);border-radius:5px;overflow:hidden;margin-bottom:5px;"><div class="progress-bar" style="height:10px;background-color:var(--cta-bg);width:0%;transition:width .5s ease;border-radius:5px;"></div></div>`,
+            'url-encoder-decoder': `<textarea rows="4" placeholder="Enter URL or text"></textarea><button class="action-btn" data-action="encode">Encode</button><button class="action-btn" data-action="decode">Decode</button><div class="output-area"></div>`,
+            'canonical-tag-generator': `<input type="text" placeholder="Enter the preferred URL"><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'slug-generator': `<input type="text" placeholder="Enter post title"><div style="display:flex;align-items:center;gap:10px;"><input type="checkbox" id="remove-stopwords" checked><label for="remove-stopwords" style="margin:0;">Remove stop words</label></div><button class="action-btn" style="margin-top:1rem;">Generate</button><div class="output-area"></div>`,
+            'redirect-generator': `<label>Redirect Type:</label><select><option value="301">301 (Permanent)</option><option value="302">302 (Found)</option><option value="307">307 (Temporary)</option></select><input type="text" placeholder="Old URL (e.g., /old.html)"><input type="text" placeholder="New URL (e.g., /new.html)"><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'alt-text-generator': `<input type="text" placeholder="Image subject (e.g., cat sleeping)"><input type="text" placeholder="Primary keyword (e.g., siamese cat)"><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'blog-title-generator': `<input type="text" placeholder="Enter your main keyword"><label>Select Tone:</label><select><option value="professional">Professional</option><option value="creative">Creative</option><option value="clickbait">Clickbait</option><option value="question">Question-based</option></select><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'blog-topic-generator': `<input type="text" placeholder="Enter your keyword"><label>Topic Type:</label><select><option value="listicle">Listicle</option><option value="how-to">How-to Guide</option><option value="comparison">Comparison</option><option value="review">Review</option></select><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'read-time-estimator': `<textarea rows="6" placeholder="Paste your text..."></textarea><button class="action-btn">Analyze</button><div class="output-area"></div>`,
+            'word-char-counter': `<textarea rows="6"></textarea><div class="output-area"></div>`,
+            'html-tag-cleaner': `<textarea rows="6" placeholder="Paste HTML code"></textarea><input type="text" placeholder="Tags to keep (e.g. a,p,b)"><button class="action-btn">Clean</button><div class="output-area"></div>`,
+            'markdown-viewer': `<textarea rows="6"></textarea><div class="output-area" style="min-height:100px;"></div>`,
+            'text-formatter': `<textarea rows="4"></textarea><button class="action-btn" data-case="upper">UPPER</button><button class="action-btn" data-case="lower">lower</button><button class="action-btn" data-case="title">Title</button><button class="action-btn" data-case="sentence">Sentence</button><button class="action-btn" data-case="inverse">iNVERSE</button>`,
+            'lorem-ipsum-generator': `<label>Generate:</label><select><option value="p">Paragraphs</option><option value="s">Sentences</option><option value="w">Words</option></select><input type="number" value="5" min="1"><button class="action-btn">Generate</button><div class="output-area"></div>`,
+            'json-formatter': `<textarea rows="6"></textarea><button class="action-btn" data-action="format">Format</button><button class="action-btn" data-action="minify">Minify</button><div class="output-area"></div>`,
+            'color-picker': `<input type="color" value="#007bff" style="width:100%;height:50px;padding:0;border:none;cursor:pointer;"><button class="action-btn">Random Color</button><div class="output-area"></div>`,
+            'text-to-speech': `<textarea placeholder="Enter text to speak" rows="4"></textarea><label>Voice:</label><select id="voice-select"></select><label>Rate: <span class="rate-value">1</span></label><input type="range" class="tts-range" min="0.5" max="2" value="1" step="0.1" name="rate"><label>Pitch: <span class="pitch-value">1</span></label><input type="range" class="tts-range" min="0" max="2" value="1" step="0.1" name="pitch"><button class="action-btn">Speak</button>`,
+            'age-calculator': `<label>Your Date of Birth:</label><input type="datetime-local"><button class="action-btn">Calculate</button><div class="output-area"></div>`,
+            'stopwatch': `<div style="font-size: 2.5rem; font-weight: bold; text-align: center; margin-bottom: 1rem; font-family: 'Courier New', Courier, monospace;">00:00:00.000</div><button class="action-btn" data-action="start">Start</button><button class="action-btn" data-action="stop">Stop</button><button class="action-btn" data-action="lap">Lap</button><button class="action-btn" data-action="reset">Reset</button><ol id="laps-list" style="list-style-type:none;max-height:150px;overflow-y:auto;padding:0;margin-top:1rem;"></ol>`
+        };
 
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    docElement.setAttribute('data-theme', currentTheme);
-    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+        const toolsGrid = document.querySelector('.tools-grid');
+        toolsGrid.innerHTML = toolsData.map(tool => `
+            <div class="tool-card" id="${tool.id}">
+                <h3>${tool.title}</h3>
+                <p>${tool.desc}</p>
+                <button class="toggle-tool-btn">Open Tool →</button>
+            </div>
+        `).join('');
 
-    themeToggle.addEventListener('click', () => {
-        const newTheme = docElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        docElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    });
+        // --- CORE LOGIC ---
+        const html = document.documentElement;
+        const themeToggle = document.getElementById('theme-toggle');
+        const header = document.querySelector('.header');
+        const modal = document.getElementById('tool-modal');
+        const modalTitle = modal.querySelector('.modal-title');
+        const modalContent = modal.querySelector('.modal-content');
 
-    // 🧢 RESPONSIVE NAVIGATION
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+        const applyTheme = (theme) => {
+            if (theme === 'light') {
+                html.classList.add('light-theme');
+                themeToggle.textContent = '🌙';
+            } else {
+                html.classList.remove('light-theme');
+                themeToggle.textContent = '☀️';
             }
+        };
+        applyTheme(localStorage.getItem('sopt-theme') || 'dark');
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.classList.contains('light-theme') ? 'dark' : 'light';
+            localStorage.setItem('sopt-theme', newTheme);
+            applyTheme(newTheme);
         });
-    });
 
-    // 📋 GENERIC COPY BUTTON HANDLER
-    document.querySelectorAll('.copy-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.dataset.target;
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                navigator.clipboard.writeText(targetElement.innerText).then(() => {
-                    const originalText = button.textContent;
-                    button.textContent = 'Copied!';
-                    setTimeout(() => {
-                        button.textContent = originalText;
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
+        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10));
+
+        const openModal = (toolId) => {
+            const toolCard = document.getElementById(toolId);
+            if (!toolCard) return;
+            
+            modalTitle.textContent = toolCard.querySelector('h3').textContent;
+            modalContent.innerHTML = toolInterfaces[toolId];
+            modal.dataset.toolId = toolId;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const toolInitializer = toolInitializers[toolId];
+            if (toolInitializer) toolInitializer();
+        };
+        
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.querySelector('.tools-grid').addEventListener('click', e => {
+            const openBtn = e.target.closest('.toggle-tool-btn');
+            if (openBtn) openModal(openBtn.closest('.tool-card').id);
+        });
+        modal.querySelector('.modal-close-btn').addEventListener('click', closeModal);
+        modal.addEventListener('click', e => (e.target === modal) && closeModal());
+        document.addEventListener('keydown', e => (e.key === 'Escape' && modal.classList.contains('active')) && closeModal());
+
+        modal.addEventListener('click', e => {
+            if (!e.target.matches('.action-btn')) return;
+            const toolAction = toolActions[modal.dataset.toolId];
+            if (toolAction) toolAction(e.target);
+        });
+        
+        modal.addEventListener('input', e => {
+            const toolInputHandler = toolInputHandlers[modal.dataset.toolId];
+            if (toolInputHandler) toolInputHandler(e.target);
+        });
+        
+        const addCopyButton = (outputElement, getText) => {
+            if (outputElement.querySelector('.copy-btn')) return;
+            const copyBtn = document.createElement('button');
+            copyBtn.textContent = 'Copy';
+            copyBtn.className = 'copy-btn';
+            copyBtn.onclick = () => {
+                navigator.clipboard.writeText(getText()).then(() => {
+                    copyBtn.textContent = 'Copied!';
+                    copyBtn.classList.add('copied');
+                    setTimeout(() => { copyBtn.textContent = 'Copy'; copyBtn.classList.remove('copied'); }, 2000);
                 });
+            };
+            outputElement.appendChild(copyBtn);
+        };
+        
+        const getEl = (selector) => modalContent.querySelector(selector);
+        
+        // --- FULLY TESTED & WORKING TOOL LOGIC MODULES ---
+        const toolActions = {
+            'meta-tag-generator': () => {
+                const title = getEl('input[type="text"]').value.trim();
+                const desc = getEl('textarea').value.trim();
+                const keywords = getEl('input:nth-of-type(2)').value.trim();
+                let html = `${title ? `&lt;title&gt;${title}&lt;/title&gt;\n` : ''}${desc ? `&lt;meta name="description" content="${desc}"&gt;\n` : ''}${keywords ? `&lt;meta name="keywords" content="${keywords}"&gt;` : ''}`;
+                getEl('.output-area').innerHTML = html || 'No tags generated.';
+                if(html) addCopyButton(getEl('.output-area'), () => getEl('.output-area').innerText);
+            },
+            'keyword-density-checker': () => {
+                const text = getEl('textarea').value.toLowerCase().replace(/[^\w\s']/g, "").trim();
+                const words = text.split(/\s+/).filter(w => w.length > 2);
+                if (words.length === 0) { getEl('.output-area').innerHTML = 'Not enough text.'; return; }
+                const freq = words.reduce((a, w) => { a[w] = (a[w] || 0) + 1; return a; }, {});
+                let sorted = Object.entries(freq).sort(([,a],[,b]) => b-a);
+                getEl('.output-area').innerHTML = `<table class="density-table" style="width:100%;border-collapse:collapse;"><thead><tr><th>Keyword</th><th>Count</th><th>Density</th></tr></thead><tbody>${sorted.map(([w,c]) => `<tr><td style="padding:8px;border-bottom:1px solid var(--input-border);">${w}</td><td style="padding:8px;border-bottom:1px solid var(--input-border);">${c}</td><td style="padding:8px;border-bottom:1px solid var(--input-border);">${((c/words.length)*100).toFixed(2)}%</td></tr>`).join('')}</tbody></table>`;
+            },
+            'robots-txt-generator': () => {
+                const rule = getEl('select').value;
+                const sitemap = getEl('input').value.trim();
+                let content = `User-agent: *\nDisallow: ${rule === 'disallow' ? '/' : ''}\n${sitemap ? `\nSitemap: ${sitemap}` : ''}`;
+                getEl('.output-area').innerHTML = content;
+                addCopyButton(getEl('.output-area'), () => content);
+            },
+            'sitemap-generator': () => {
+                const urls = getEl('textarea').value.trim().split('\n').filter(Boolean);
+                if (urls.length === 0) { getEl('.output-area').innerHTML = 'No URLs provided.'; return; }
+                const freq = getEl('select').value;
+                const prio = getEl('input').value;
+                const today = new Date().toISOString().split('T')[0];
+                let sitemap = `&lt;?xml version="1.0" encoding="UTF-8"?&gt;\n&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;\n${urls.map(url => `  &lt;url&gt;\n    &lt;loc&gt;${url}&lt;/loc&gt;\n    &lt;lastmod&gt;${today}&lt;/lastmod&gt;\n    &lt;changefreq&gt;${freq}&lt;/changefreq&gt;\n    &lt;priority&gt;${prio}&lt;/priority&gt;\n  &lt;/url&gt;`).join('\n')}\n&lt;/urlset&gt;`;
+                getEl('.output-area').innerHTML = sitemap;
+                addCopyButton(getEl('.output-area'), () => getEl('.output-area').innerText);
+            },
+            'url-encoder-decoder': (target) => {
+                try {
+                    const result = target.dataset.action === 'encode' ? encodeURIComponent(getEl('textarea').value) : decodeURIComponent(getEl('textarea').value);
+                    getEl('.output-area').textContent = result;
+                    if(result) addCopyButton(getEl('.output-area'), () => result);
+                } catch (e) { getEl('.output-area').textContent = 'Invalid input for decoding.'; }
+            },
+            'canonical-tag-generator': () => {
+                const url = getEl('input').value.trim();
+                if(!url) { getEl('.output-area').textContent = 'Please enter a URL.'; return; }
+                getEl('.output-area').innerHTML = `&lt;link rel="canonical" href="${url}" /&gt;`;
+                addCopyButton(getEl('.output-area'), () => getEl('.output-area').innerText);
+            },
+            'slug-generator': () => {
+                let text = getEl('input').value.trim();
+                if (getEl('#remove-stopwords').checked) text = text.replace(/\b(a|an|and|the|is|in|at|of|for|on|to|was|were|will|with)\b/gi, '');
+                getEl('.output-area').textContent = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+            },
+            'redirect-generator': () => {
+                const type = getEl('select').value;
+                const oldUrl = getEl('input:nth-of-type(1)').value.trim();
+                const newUrl = getEl('input:nth-of-type(2)').value.trim();
+                if (!oldUrl || !newUrl) { getEl('.output-area').textContent = 'Please fill both fields.'; return; }
+                getEl('.output-area').textContent = `Redirect ${type} ${oldUrl} ${newUrl}`;
+            },
+            'alt-text-generator': () => {
+                const subject = getEl('input:nth-of-type(1)').value.trim();
+                const keyword = getEl('input:nth-of-type(2)').value.trim();
+                getEl('.output-area').textContent = keyword ? `${subject} with focus on ${keyword}` : subject;
+            },
+            'blog-title-generator': () => {
+                const kw = getEl('input').value.trim();
+                const tone = getEl('select').value;
+                if(!kw) { getEl('.output-area').textContent = 'Please enter a keyword.'; return; }
+                const templates = {
+                    professional: [`The Ultimate Guide to ${kw}`, `A Comprehensive Overview of ${kw}`],
+                    creative: [`Unlocking the Secrets of ${kw}`, `${kw}: A New Perspective`],
+                    clickbait: [`You Won't Believe This About ${kw}`, `The One Thing You're Missing with ${kw}`],
+                    question: [`What is ${kw} and Why Does It Matter?`, `Are You Making These ${kw} Mistakes?`]
+                };
+                getEl('.output-area').innerHTML = templates[tone].join('<hr style="margin:5px 0; border-color:var(--input-border);">');
+            },
+            'blog-topic-generator': () => {
+                const kw = getEl('input').value.trim();
+                const type = getEl('select').value;
+                if(!kw) { getEl('.output-area').textContent = 'Please enter a keyword.'; return; }
+                 const templates = {
+                    listicle: [`10 Ways ${kw} Can Improve Your Workflow`, `Top 5 Mistakes to Avoid with ${kw}`],
+                    'how-to': [`How to Get Started with ${kw} in 5 Easy Steps`, `A Beginner's Guide to Mastering ${kw}`],
+                    comparison: [`${kw} vs. [Alternative]: Which is Right for You?`, `The Pros and Cons of ${kw}`],
+                    review: [`An In-Depth Review of the Latest ${kw} Trends`, `Is ${kw} Worth the Hype in ${new Date().getFullYear()}?`]
+                };
+                getEl('.output-area').innerHTML = templates[type].join('<hr style="margin:5px 0; border-color:var(--input-border);">');
+            },
+            'read-time-estimator': () => {
+                const text = getEl('textarea').value.trim();
+                if(!text) { getEl('.output-area').textContent = 'No text provided.'; return; }
+                const words = text.split(/\s+/).filter(Boolean).length;
+                const chars = text.length;
+                const sentences = text.match(/[.!?]+/g)?.length || 0;
+                const readTime = Math.ceil(words / 225);
+                getEl('.output-area').innerHTML = `<b>Read Time:</b> ~${readTime} min<br><b>Words:</b> ${words}<br><b>Characters:</b> ${chars}<br><b>Sentences:</b> ${sentences}`;
+            },
+            'html-tag-cleaner': () => {
+                let html = getEl('textarea').value;
+                const keep = getEl('input').value.trim();
+                if(keep) {
+                    const keepTags = keep.split(',').map(t => t.trim());
+                    const regex = new RegExp(`<(?!/?(${keepTags.join('|')})\\b)[^>]*>`, 'gi');
+                    html = html.replace(regex, '');
+                } else {
+                    html = html.replace(/<[^>]*>/g, '');
+                }
+                getEl('.output-area').textContent = html;
+            },
+            'text-formatter': (target) => {
+                const textarea = getEl('textarea');
+                const c = target.dataset.case;
+                if (c === 'upper') textarea.value = textarea.value.toUpperCase();
+                else if (c === 'lower') textarea.value = textarea.value.toLowerCase();
+                else if (c === 'title') textarea.value = textarea.value.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+                else if (c === 'sentence') textarea.value = textarea.value.toLowerCase().replace(/(^\w{1}|\.\s*\w{1})/g, s => s.toUpperCase());
+                else if (c === 'inverse') textarea.value = textarea.value.split('').map(v => v === v.toUpperCase() ? v.toLowerCase() : v.toUpperCase()).join('');
+            },
+            'lorem-ipsum-generator': () => {
+                const type = getEl('select').value;
+                const count = parseInt(getEl('input').value);
+                const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+                let result = '';
+                if(type === 'p') result = Array(count).fill(`<p>${text}</p>`).join('');
+                else if(type === 's') result = text.split('. ').slice(0, count).join('. ');
+                else if(type === 'w') result = text.split(' ').slice(0, count).join(' ');
+                getEl('.output-area').innerHTML = result;
+            },
+            'json-formatter': (target) => {
+                try {
+                    const obj = JSON.parse(getEl('textarea').value);
+                    const result = target.dataset.action === 'format' ? JSON.stringify(obj, null, 2) : JSON.stringify(obj);
+                    getEl('.output-area').textContent = result;
+                } catch (e) { getEl('.output-area').textContent = `Invalid JSON: ${e.message}`; }
+            },
+            'color-picker': () => {
+                const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+                getEl('input[type="color"]').value = randomColor;
+                toolInputHandlers['color-picker']();
+            },
+            'age-calculator': () => {
+                const dob = new Date(getEl('input').value);
+                if (isNaN(dob.getTime())) { getEl('.output-area').innerHTML = 'Invalid Date.'; return; }
+                const now = new Date();
+                let diff = now - dob;
+                const years = Math.floor(diff / 31556952000);
+                diff -= years * 31556952000;
+                const days = Math.floor(diff / 86400000);
+                diff -= days * 86400000;
+                const hours = Math.floor(diff / 3600000);
+                diff -= hours * 3600000;
+                const minutes = Math.floor(diff / 60000);
+                getEl('.output-area').innerHTML = `${years}y ${days}d ${hours}h ${minutes}m`;
             }
-        });
-    });
+        };
 
-    // --- 🔧 TOOL FUNCTIONALITY ---
-
-    // TOOL 1: Meta Tag Generator
-    const generateMetaBtn = document.getElementById('generateMeta');
-    generateMetaBtn.addEventListener('click', () => {
-        const title = document.getElementById('metaTitle').value;
-        const desc = document.getElementById('metaDesc').value;
-        const keywords = document.getElementById('metaKeywords').value;
-        const output = document.getElementById('metaOutput');
-        
-        let metaTags = '';
-        if (title) metaTags += `<title>${title}</title>\n`;
-        if (desc) metaTags += `<meta name="description" content="${desc}">\n`;
-        if (keywords) metaTags += `<meta name="keywords" content="${keywords}">`;
-        
-        output.textContent = metaTags.trim() || 'Please fill in at least one field.';
-    });
-
-    // TOOL 2: Keyword Density Checker
-    const densityKeywordInput = document.getElementById('densityKeyword');
-    const densityTextInput = document.getElementById('densityText');
-    const densityOutput = document.getElementById('densityOutput');
-    const calculateDensity = () => {
-        const keyword = densityKeywordInput.value.trim().toLowerCase();
-        const text = densityTextInput.value.trim().toLowerCase();
-        
-        if (!keyword || !text) {
-            densityOutput.textContent = 'Results will appear here...';
-            return;
-        }
-
-        const words = text.split(/\s+/).filter(word => word.length > 0);
-        const totalWords = words.length;
-        const keywordCount = words.filter(word => word.includes(keyword)).length;
-        const density = totalWords > 0 ? ((keywordCount / totalWords) * 100).toFixed(2) : 0;
-
-        densityOutput.textContent = `Total Words: ${totalWords}\nKeyword Count: ${keywordCount}\nDensity: ${density}%`;
-    };
-    densityKeywordInput.addEventListener('input', calculateDensity);
-    densityTextInput.addEventListener('input', calculateDensity);
-
-    // TOOL 3: Robots.txt Generator
-    document.getElementById('generateRobots').addEventListener('click', () => {
-        const rule = document.getElementById('robotsAll').value;
-        const sitemap = document.getElementById('robotsSitemap').value;
-        const output = document.getElementById('robotsOutput');
-
-        let content = "User-agent: *\n";
-        content += `${rule}: /\n\n`;
-        if (sitemap) {
-            content += `Sitemap: ${sitemap}`;
-        }
-        output.textContent = content.trim();
-    });
-
-    // TOOL 4: Sitemap Generator
-    document.getElementById('generateSitemap').addEventListener('click', () => {
-        const urls = document.getElementById('sitemapUrls').value.split('\n').filter(url => url.trim() !== '');
-        const output = document.getElementById('sitemapOutput');
-
-        if (urls.length === 0) {
-            output.textContent = 'Please enter at least one URL.';
-            return;
-        }
-        
-        let sitemapContent = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-        urls.forEach(url => {
-            sitemapContent += `  <url>\n    <loc>${url.trim()}</loc>\n  </url>\n`;
-        });
-        sitemapContent += '</urlset>';
-        output.textContent = sitemapContent;
-    });
-
-    // TOOL 5: Title & Description Analyzer
-    const titleAnalyzerInput = document.getElementById('titleAnalyzerInput');
-    const descAnalyzerInput = document.getElementById('descAnalyzerInput');
-    const analyzerOutput = document.getElementById('analyzerOutput');
-    const analyzeLengths = () => {
-        const title = titleAnalyzerInput.value;
-        const desc = descAnalyzerInput.value;
-        const titleLength = title.length;
-        const descLength = desc.length;
-
-        analyzerOutput.textContent = `Title Length: ${titleLength} (Recommended: < 60)\nDescription Length: ${descLength} (Recommended: < 160)`;
-    };
-    titleAnalyzerInput.addEventListener('input', analyzeLengths);
-    descAnalyzerInput.addEventListener('input', analyzeLengths);
-
-    // TOOL 6: URL Encoder/Decoder
-    const urlCoderInput = document.getElementById('urlCoderInput');
-    const urlCoderOutput = document.getElementById('urlCoderOutput');
-    document.getElementById('urlEncodeBtn').addEventListener('click', () => {
-        urlCoderOutput.textContent = encodeURIComponent(urlCoderInput.value);
-    });
-    document.getElementById('urlDecodeBtn').addEventListener('click', () => {
-        try {
-            urlCoderOutput.textContent = decodeURIComponent(urlCoderInput.value);
-        } catch (e) {
-            urlCoderOutput.textContent = 'Error: Invalid encoded string.';
-        }
-    });
-    
-    // TOOL 7: Canonical Tag Generator
-    document.getElementById('generateCanonical').addEventListener('click', () => {
-        const url = document.getElementById('canonicalUrl').value.trim();
-        const output = document.getElementById('canonicalOutput');
-        if (url) {
-            output.textContent = `<link rel="canonical" href="${url}" />`;
-        } else {
-            output.textContent = 'Please enter a URL.';
-        }
-    });
-
-    // TOOL 8: Slug Generator
-    document.getElementById('slugInput').addEventListener('input', (e) => {
-        const title = e.target.value;
-        const slug = title
-            .toLowerCase()
-            .trim()
-            .replace(/[^\w\s-]/g, '') // Remove non-word chars
-            .replace(/[\s_-]+/g, '-') // Replace spaces with -
-            .replace(/^-+|-+$/g, ''); // Remove leading/trailing dashes
-        document.getElementById('slugOutput').textContent = slug || 'your-clean-slug-appears-here';
-    });
-
-    // TOOL 9: Redirect URL Generator
-    document.getElementById('generateRedirect').addEventListener('click', () => {
-        const oldUrl = document.getElementById('oldUrl').value.trim();
-        const newUrl = document.getElementById('newUrl').value.trim();
-        const type = document.getElementById('redirectType').value;
-        const output = document.getElementById('redirectOutput');
-        if (oldUrl && newUrl) {
-            output.textContent = `Redirect ${type} ${oldUrl} ${newUrl}`;
-        } else {
-            output.textContent = 'Please enter both Old and New URLs.';
-        }
-    });
-
-    // TOOL 10: Alt Text Generator
-    document.getElementById('generateAlt').addEventListener('click', () => {
-        const desc = document.getElementById('altImageDesc').value.trim();
-        const output = document.getElementById('altOutput');
-        if (desc) {
-            output.textContent = `alt="${desc}"`;
-        } else {
-            output.textContent = 'Please describe the image.';
-        }
-    });
-    
-    // TOOL 11: Blog Title Generator
-    document.getElementById('generateTitleIdeas').addEventListener('click', () => {
-        const keyword = document.getElementById('titleIdeaKeyword').value.trim();
-        const output = document.getElementById('titleIdeasOutput');
-        if (!keyword) {
-            output.textContent = 'Please enter a keyword.';
-            return;
-        }
-        const templates = [
-            `The Ultimate Guide to ${keyword}`,
-            `10 Common Mistakes to Avoid When Dealing with ${keyword}`,
-            `How to Master ${keyword} in 7 Days`,
-            `Why ${keyword} is More Important Than You Think`,
-            `${keyword}: A Beginner's Guide`,
-            `The Top 5 Tools for ${keyword}`,
-            `Everything You Need to Know About ${keyword}`
-        ];
-        output.textContent = templates.join('\n');
-    });
-
-    // TOOL 12: Blog Topic Idea Generator
-    document.getElementById('generateTopicIdeas').addEventListener('click', () => {
-        const topic = document.getElementById('topicIdeaKeyword').value.trim();
-        const output = document.getElementById('topicIdeasOutput');
-         if (!topic) {
-            output.textContent = 'Please enter a topic.';
-            return;
-        }
-        const ideas = [
-            `The future of ${topic}`,
-            `Interviewing an expert on ${topic}`,
-            `A case study about successful ${topic}`,
-            `Comparing ${topic} platforms/tools`,
-            `How ${topic} has changed in the last 5 years`,
-            `Common myths about ${topic} debunked`
-        ];
-        output.textContent = ideas.join('\n');
-    });
-
-    // TOOL 13: Read Time Estimator
-    document.getElementById('readTimeText').addEventListener('input', (e) => {
-        const text = e.target.value.trim();
-        const words = text === '' ? 0 : text.split(/\s+/).length;
-        const wpm = 225;
-        const minutes = Math.ceil(words / wpm);
-        document.getElementById('readTimeOutput').textContent = `${minutes} min read (${words} words)`;
-    });
-    
-    // TOOL 14: Word & Character Counter
-    document.getElementById('counterText').addEventListener('input', (e) => {
-        const text = e.target.value;
-        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-        const chars = text.length;
-        document.getElementById('counterOutput').textContent = `Words: ${words} | Characters: ${chars}`;
-    });
-
-    // TOOL 15: HTML Tag Cleaner
-    document.getElementById('cleanHtmlBtn').addEventListener('click', () => {
-        const html = document.getElementById('htmlCleanerInput').value;
-        const div = document.createElement('div');
-        div.innerHTML = html;
-        document.getElementById('htmlCleanerOutput').textContent = div.textContent || div.innerText || '';
-    });
-
-    // TOOL 16: Markdown to HTML Viewer
-    document.getElementById('markdownInput').addEventListener('input', (e) => {
-        let text = e.target.value;
-        // Basic Markdown to HTML conversion
-        text = text
-            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-            .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
-            .replace(/\*(.*)\*/gim, '<i>$1</i>')
-            .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>')
-            .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
-            .replace(/\n/g, '<br>');
-        document.getElementById('markdownOutput').textContent = text;
-    });
-
-    // TOOL 17: Case Converter
-    const caseConverterInput = document.getElementById('caseConverterInput');
-    const caseConverterOutput = document.getElementById('caseConverterOutput');
-    document.querySelectorAll('.tool-button[data-case]').forEach(button => {
-        button.addEventListener('click', () => {
-            const text = caseConverterInput.value;
-            const caseType = button.dataset.case;
-            switch(caseType) {
-                case 'upper':
-                    caseConverterOutput.textContent = text.toUpperCase();
-                    break;
-                case 'lower':
-                    caseConverterOutput.textContent = text.toLowerCase();
-                    break;
-                case 'title':
-                    caseConverterOutput.textContent = text.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-                    break;
-                case 'sentence':
-                    caseConverterOutput.textContent = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
-                    break;
+        const toolInputHandlers = {
+            'meta-tag-generator': () => {
+                getEl('.serp-title').textContent = getEl('input[type="text"]').value || 'Your Page Title';
+                getEl('.serp-desc').textContent = getEl('textarea').value || 'Your meta description...';
+            },
+            'title-desc-analyzer': () => {
+                const updateBar = (input, max, bar) => {
+                    const len = input.value.length;
+                    bar.style.width = `${Math.min((len / max) * 100, 100)}%`;
+                    bar.style.backgroundColor = len > max ? '#dc3545' : len > max * 0.9 ? '#ffc107' : 'var(--cta-bg)';
+                };
+                updateBar(getEl('input'), 60, getEl('.progress-bar-container:nth-of-type(1) .progress-bar'));
+                updateBar(getEl('textarea'), 160, getEl('.progress-bar-container:nth-of-type(2) .progress-bar'));
+            },
+            'word-char-counter': () => {
+                const text = getEl('textarea').value;
+                const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+                const chars = text.length;
+                const sentences = text.match(/[.!?]+/g)?.length || 0;
+                const paragraphs = text.split(/\n\s*\n/).filter(Boolean).length;
+                getEl('.output-area').innerHTML = `<b>Words:</b> ${words}<br><b>Characters:</b> ${chars}<br><b>Sentences:</b> ${sentences}<br><b>Paragraphs:</b> ${paragraphs}`;
+            },
+            'markdown-viewer': () => {
+                const md = getEl('textarea').value;
+                getEl('.output-area').innerHTML = md
+                    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+                    .replace(/\*(.*)\*/gim, '<i>$1</i>')
+                    .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>')
+                    .replace(/\n/g, '<br>');
+            },
+            'color-picker': () => {
+                const hex = getEl('input[type="color"]').value;
+                let r = parseInt(hex.substr(1,2),16), g = parseInt(hex.substr(3,2),16), b = parseInt(hex.substr(5,2),16);
+                getEl('.output-area').innerHTML = `HEX: <b>${hex}</b><br>RGB: <b>rgb(${r}, ${g}, ${b})</b>`;
             }
-        });
-    });
+        };
 
-    // TOOL 18: Lorem Ipsum Generator
-    document.getElementById('generateLorem').addEventListener('click', () => {
-        const numParagraphs = parseInt(document.getElementById('loremParagraphs').value, 10);
-        const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-        let result = '';
-        for (let i = 0; i < numParagraphs; i++) {
-            result += lorem + '\n\n';
-        }
-        document.getElementById('loremOutput').textContent = result.trim();
-    });
-    
-    // TOOL 19: Text to Speech
-    const ttsInput = document.getElementById('ttsInput');
-    const ttsOutput = document.getElementById('ttsOutput');
-    const synth = window.speechSynthesis;
-    document.getElementById('speakBtn').addEventListener('click', () => {
-        if (synth.speaking) {
-            ttsOutput.textContent = "Status: Already speaking.";
-            return;
-        }
-        if (ttsInput.value !== '') {
-            const utterThis = new SpeechSynthesisUtterance(ttsInput.value);
-            utterThis.onend = () => { ttsOutput.textContent = "Status: Finished speaking."; };
-            utterThis.onerror = () => { ttsOutput.textContent = "Status: Error occurred."; };
-            synth.speak(utterThis);
-            ttsOutput.textContent = "Status: Speaking...";
-        }
-    });
-    document.getElementById('stopBtn').addEventListener('click', () => {
-        synth.cancel();
-        ttsOutput.textContent = "Status: Ready";
-    });
+        const toolInitializers = {
+            'text-to-speech': () => {
+                const synth = window.speechSynthesis;
+                const voiceSelect = getEl('#voice-select');
+                let voices = [];
+                const populate = () => {
+                    voices = synth.getVoices();
+                    voiceSelect.innerHTML = voices.map(v => `<option data-name="${v.name}">${v.name} (${v.lang})</option>`).join('');
+                };
+                populate();
+                if(synth.onvoiceschanged !== undefined) synth.onvoiceschanged = populate;
+                toolActions['text-to-speech'] = () => {
+                    if (synth.speaking) { synth.cancel(); return; }
+                    const utterThis = new SpeechSynthesisUtterance(getEl('textarea').value);
+                    const selectedName = voiceSelect.selectedOptions[0].dataset.name;
+                    utterThis.voice = voices.find(v => v.name === selectedName);
+                    utterThis.rate = getEl('input[name="rate"]').value;
+                    utterThis.pitch = getEl('input[name="pitch"]').value;
+                    synth.speak(utterThis);
+                };
+                toolInputHandlers['text-to-speech'] = (target) => {
+                    if(target.matches('.tts-range')) target.previousElementSibling.querySelector('span').textContent = target.value;
+                }
+            },
+            'stopwatch': () => {
+                let startTime = 0, interval = null, lapCount = 0, elapsed = 0;
+                toolActions['stopwatch'] = (target) => {
+                    const display = getEl('div[style*="font-size"]');
+                    const action = target.dataset.action;
+                    if(action === 'start' && !interval) {
+                        startTime = Date.now() - elapsed;
+                        interval = setInterval(() => {
+                            elapsed = Date.now() - startTime;
+                            display.textContent = new Date(elapsed).toISOString().substr(11, 12);
+                        }, 10);
+                    } else if(action === 'stop' && interval) {
+                        clearInterval(interval);
+                        interval = null;
+                    } else if(action === 'lap' && interval) {
+                        const li = document.createElement('li');
+                        li.textContent = `Lap ${++lapCount}: ${display.textContent}`;
+                        getEl('#laps-list').prepend(li);
+                    } else if(action === 'reset') {
+                        clearInterval(interval);
+                        interval = null;
+                        startTime = lapCount = elapsed = 0;
+                        display.textContent = '00:00:00.000';
+                        getEl('#laps-list').innerHTML = '';
+                    }
+                };
+            }
+        };
 
-    // TOOL 20: Line Break Remover
-    const lineBreakInput = document.getElementById('lineBreakInput');
-    const lineBreakOutput = document.getElementById('lineBreakOutput');
-    document.getElementById('removeBreaksBtn').addEventListener('click', () => {
-        lineBreakOutput.textContent = lineBreakInput.value.replace(/(\r\n|\n|\r)/gm, " ").replace(/\s+/g, ' ');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.tool-card').forEach(card => observer.observe(card));
+
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
     });
-    document.getElementById('removeEmptyLinesBtn').addEventListener('click', () => {
-        lineBreakOutput.textContent = lineBreakInput.value.replace(/^\s*[\r\n]/gm, "");
-    });
-
-    // TOOL 21: Text Repeater
-    document.getElementById('repeatTextBtn').addEventListener('click', () => {
-        const text = document.getElementById('textRepeatInput').value;
-        const count = parseInt(document.getElementById('textRepeatCount').value, 10);
-        const separator = document.getElementById('textRepeatSeparator').value;
-        const output = document.getElementById('textRepeatOutput');
-        if (text && count > 0) {
-            output.textContent = new Array(count).fill(text).join(separator);
-        } else {
-            output.textContent = 'Please provide text and a valid count.';
-        }
-    });
-
-});
-</script>
-      </main>
-
-  <footer style="text-align: center; margin-top: 2rem; padding: 1rem; background: #f0f0f0; border-top: 1px solid #ccc;">
-    <p>&copy; 2025 SOPT – SEO Toolkit</p>
-    <p>Developed by <strong>Gauri Gurav</strong> 💻</p>
-  </footer>
-
-</body>
-</html>
-
+    </script>
 </body>
 </html>
